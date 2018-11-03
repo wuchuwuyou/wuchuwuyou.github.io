@@ -258,53 +258,6 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 157 words)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/10/31/2018-11-1-github-permission-denied/">github Permission denied (publickey)</a>
-            
-        </h1>
-        <div class="content">
-            <p>今天重新生成了github的ssh key,添加完以后发现提示 </p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
-<p>然后查了一下资料，因为我在创建的时候给文件输入了个名字</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/Users/murphy/.ssh/id_rsa): github</span><br></pre></td></tr></table></figure>
-<p>可以通过<figure class="highlight plain hljs"><figcaption><span>~/.ssh/your_file_name```的方式解决。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">也可以在 ~/.ssh/ 目录下编辑config配置文件</span><br></pre></td></tr></table></figure></p>
-<p>vi config</p>
-<p>Host github.com<br> HostName github.com<br> User git<br> IdentityFile ~/.ssh/github_rsa<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User 就是用户名</span><br><span class="line"></span><br><span class="line">最后验证一下 ```ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-31T09:19:44.000Z">2018-10-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
                     a few seconds read (About 6 words)
                 </span>
                 
@@ -634,6 +587,65 @@
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-03T01:58:40.000Z">2018-08-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 274 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/08/03/2018-08-03-maccrashreportssymbol/">macOS崩溃日志符号化</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="分析工具"><a href="#分析工具" class="headerlink" title="分析工具"></a>分析工具</h3><p>网上一大堆文章都是分析iOS的崩溃日志的，针对Mac的特别少，其实基本原理都差不多，就不再详细的描述了。就推荐一个崩溃日志符号化的工具。</p>
+<p><a href="https://mahdi.jp/apps/macsymbolicator" target="_blank" rel="noopener">下载地址</a></p>
+<p><a href="https://github.com/inket/MacSymbolicator" target="_blank" rel="noopener">源码地址</a></p>
+<ul>
+<li>使用方法：<ol>
+<li>将 .crash 文件和 .dSYM 文件放在同一目录下。</li>
+<li>将 .crash 或者 .dSYM 拖入这个工具中，另外一个文件会自动导入</li>
+</ol>
+</li>
+<li>注1：.dSYM 可以在打包时候生产的 .xcarchive 包中找到。</li>
+<li>注2：注意 .crash 和 .dSYM 的UUID要一致</li>
+<li>查看dSYM UUID  <code>xcrun dwarfdump --uuid file_path</code></li>
+<li>.crash 查看UUID 在 Binary Images 的下一行 包名 后面的那一串字符 </li>
+</ul>
+<h3 id="还有一个工具可以参考"><a href="#还有一个工具可以参考" class="headerlink" title="还有一个工具可以参考"></a>还有一个工具可以参考</h3><p><a href="https://github.com/answer-huang/dSYMTools" target="_blank" rel="noopener">dSYMTools</a><br>这个工具也可以符号化崩溃日志，需要手动操作，具体使用方式链接上面说的很清楚了。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="http://www.smileykeith.com/2013/08/09/os-x-crash-symbolication/" target="_blank" rel="noopener">http://www.smileykeith.com/2013/08/09/os-x-crash-symbolication/</a></li>
+<li><a href="https://stackoverflow.com/questions/5842147/how-to-symbolicate-mac-osx-crash-reports-issued-by-apple" target="_blank" rel="noopener">https://stackoverflow.com/questions/5842147/how-to-symbolicate-mac-osx-crash-reports-issued-by-apple</a></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -693,7 +705,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        19
                     </p>
                 </div>
             </div>
@@ -824,7 +836,7 @@
                 <span class="level-item">technology</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">16</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li>
             </ul>
@@ -884,25 +896,6 @@
         
         <article class="media">
             
-            <a href="/2018/10/31/2018-11-1-github-permission-denied/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="github Permission denied (publickey)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-31T09:19:44.000Z">2018-10-31</time></div>
-                    <a href="/2018/10/31/2018-11-1-github-permission-denied/" class="has-link-black-ter is-size-6">github Permission denied (publickey)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/10/31/2018-10-31-create-file/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS创建随机文件">
@@ -939,6 +932,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -968,7 +980,7 @@
                     <span class="level-item">October 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -1136,25 +1148,6 @@
         
         <article class="media">
             
-            <a href="/2018/10/31/2018-11-1-github-permission-denied/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="github Permission denied (publickey)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-31T09:19:44.000Z">2018-10-31</time></div>
-                    <a href="/2018/10/31/2018-11-1-github-permission-denied/" class="has-link-black-ter is-size-6">github Permission denied (publickey)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/10/31/2018-10-31-create-file/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS创建随机文件">
@@ -1191,6 +1184,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1220,7 +1232,7 @@
                     <span class="level-item">October 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
