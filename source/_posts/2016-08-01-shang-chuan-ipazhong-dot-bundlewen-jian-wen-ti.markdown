@@ -11,11 +11,9 @@ keywords: ERROR ITMS-90166,ERROR ITMS-90171,Bundle,iOS静态资源包,faceid
 
 报错信息:
 
->
-ERROR ITMS-90166: "Missing Code Signing Entitlements. No entitlements found in bundle 'com.xx.xxxx' for executable 'Payload/xx.app/PlugIns/xxxx.bundle/xxxx'.""
+>ERROR ITMS-90166: "Missing Code Signing Entitlements. No entitlements found in bundle 'com.xx.xxxx' for executable 'Payload/xx.app/PlugIns/xxxx.bundle/xxxx'.""
 
->
-ERROR ITMS-90171: "Invalid Bundle Structure - The binary file 'xx.app/PlugIns/xxxx.bundle/xxxx' is not permitted. Your app can’t contain standalone executables or libraries, other than the CFBundleExecutable of supported bundles. Refer to the Bundle Programming Guide at https://developer.apple.com/go/?id=bundle-structure for information on the iOS app bundle structure."
+>ERROR ITMS-90171: "Invalid Bundle Structure - The binary file 'xx.app/PlugIns/xxxx.bundle/xxxx' is not permitted. Your app can’t contain standalone executables or libraries, other than the CFBundleExecutable of supported bundles. Refer to the Bundle Programming Guide at https://developer.apple.com/go/?id=bundle-structure for information on the iOS app bundle structure."
 
 
 基本上就是报这两个错误，由于文件都是别人提供的，我就去问了下技术支持，但是没人鸟我啊，所以只能自己解决了。
@@ -23,8 +21,7 @@ ERROR ITMS-90171: "Invalid Bundle Structure - The binary file 'xx.app/PlugIns/xx
 刚看到报错信息我就想当然的就去网上搜了。费了很长时间都没有解决，焦头烂额，人也很烦躁。
 
 后来实在没招了，仔细看了下报错信息，再对比下源文件，bundle 包下有一个可执行文件，报错信息中也确实给指出了问题:
->
-Your app can’t contain standalone `executables` or libraries, other than the CFBundleExecutable of supported bundles.
+>Your app can’t contain standalone `executables` or libraries, other than the CFBundleExecutable of supported bundles.
 
 #### 解决办法：
 

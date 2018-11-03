@@ -8,27 +8,25 @@ keywords: Permission denied
 ---
 
 ### Cocoa中WebView允许选择本地上传文件
+
 Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候
-```
+
+```js
 <input type="file" name="uploadfile">
+
 ```
+
 在webview上不能正常的弹出选择器，cef正常。
 
-解决该问题只需要实现 ```WebUIDelegate``` 的代理方法 
+### WebUIDelegate
+解决该问题只需要实现 `WebUIDelegate` 的代理方法 
 
 ```objc
-/*!
-    @method webView:runOpenPanelForFileButtonWithResultListener:
-    @abstract Display a file open panel for a file input control.
-    @param sender The WebView sending the delegate method.
-    @param resultListener The object to call back with the results.
-    @discussion This method is passed a callback object instead of giving a return
-    value so that it can be handled with a sheet.
-*/
 - (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id<WebOpenPanelResultListener>)resultListener;
+
 ```
 
-实现内容
+### 实现内容
 
 ```objc
 #pragma mark -  webview

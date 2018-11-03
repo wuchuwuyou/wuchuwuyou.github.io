@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS&amp;macOS 异常捕获"
+title: "iOS&macOS 异常捕获"
 date: 2018-08-13 10:56:02 +0800
 comments: true
 categories: technology

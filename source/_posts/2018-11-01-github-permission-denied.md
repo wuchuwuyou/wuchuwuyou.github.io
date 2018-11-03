@@ -22,8 +22,9 @@ and the repository exists.
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/murphy/.ssh/id_rsa): github
 ```
-可以通过```ssh-add ~/.ssh/your_file_name```的方式解决。
+可以通过``ssh-add ~/.ssh/your_file_name``的方式解决。
 也可以在 ~/.ssh/ 目录下编辑config配置文件
+
 ```
 vi config
 
