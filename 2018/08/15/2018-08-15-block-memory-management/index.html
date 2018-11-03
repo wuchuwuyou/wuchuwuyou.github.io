@@ -2,18 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives - JUST4FUn</title>
+<title>block memory management - JUST4FUn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="JUST4FUn">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="block内存管理，先看几个例子 123456781.    int a = 0;    void (^block)(void) = ^ &amp;#123;        printf(&amp;quot;in block a = %d,%p\n&amp;quot;,a,&amp;amp;a);    &amp;#125;;    a = 1;    block();    printf(&amp;quot;after block a = %">
+<meta property="og:type" content="article">
+<meta property="og:title" content="block memory management">
+<meta property="og:url" content="http://yoursite.com/2018/08/15/2018-08-15-block-memory-management/index.html">
 <meta property="og:site_name" content="JUST4FUn">
+<meta property="og:description" content="block内存管理，先看几个例子 123456781.    int a = 0;    void (^block)(void) = ^ &amp;#123;        printf(&amp;quot;in block a = %d,%p\n&amp;quot;,a,&amp;amp;a);    &amp;#125;;    a = 1;    block();    printf(&amp;quot;after block a = %">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-01T14:27:37.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JUST4FUn">
+<meta name="twitter:title" content="block memory management">
+<meta name="twitter:description" content="block内存管理，先看几个例子 123456781.    int a = 0;    void (^block)(void) = ^ &amp;#123;        printf(&amp;quot;in block a = %d,%p\n&amp;quot;,a,&amp;amp;a);    &amp;#125;;    a = 1;    block();    printf(&amp;quot;after block a = %">
 
 
 
@@ -110,7 +114,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -144,229 +148,72 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-08-15T03:52:02.000Z">2018-08-15</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-02T03:30:44.000Z">2018-11-02</time>
-                        <a href="/2018/11/02/2018-11-02-cocoa-webview-upload-file /" class="has-link-black-ter is-size-6">Cocoa中WebView允许选择本地上传文件</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-01T09:19:44.000Z">2018-11-01</time>
-                        <a href="/2018/11/01/2018-11-01-github-permission-denied/" class="has-link-black-ter is-size-6">github Permission denied (publickey)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-10-31T09:19:44.000Z">2018-10-31</time>
-                        <a href="/2018/10/31/2018-11-1-github-permission-denied/" class="has-link-black-ter is-size-6">github Permission denied (publickey)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 180 words)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-10-31T09:19:44.000Z">2018-10-31</time>
-                        <a href="/2018/10/31/2018-10-31-create-file/" class="has-link-black-ter is-size-6">macOS创建随机文件</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time>
-                        <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time>
-                        <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time>
-                        <a href="/2018/08/28/2018-09-12-cocoapods-private-repo/" class="has-link-black-ter is-size-6">CocoaPods私有库</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time>
-                        <a href="/2018/08/28/2018-08-28-lately-record/" class="has-link-black-ter is-size-6">记录一下</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-15T03:52:02.000Z">2018-08-15</time>
-                        <a href="/2018/08/15/2018-08-15-block-memory-management/" class="has-link-black-ter is-size-6">block memory management</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-08-13T02:56:02.000Z">2018-08-13</time>
-                        <a href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/" class="has-link-black-ter is-size-6">iOS&amp;amp;macOS 异常捕获</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                block memory management
+            
+        </h1>
+        <div class="content">
+            <p>block内存管理，先看几个例子</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">    int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2.</span><br><span class="line">    __block int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">3.</span><br><span class="line">    __block int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">        a = 2;</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<p>输出分别是</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">in block a = 0,0x600000252ec0</span><br><span class="line">after block a = 1,0x7ffee71c8104</span><br><span class="line">2.</span><br><span class="line">in block a = 1,0x600000429ef8</span><br><span class="line">after block a = 1,0x600000429ef8</span><br><span class="line">3.</span><br><span class="line">in block a = 1,0x60000042b118</span><br><span class="line">after block a = 2,0x60000042b118</span><br></pre></td></tr></table></figure>
+<p>输出中不难看出在1中变量 a 在 block 中被 copy 了生成了新的地址。经过 __block修饰符声明的变量在 block 中就是同一个地址。</p>
+
+        </div>
+        
+        
+        
     </div>
 </div>
 
-    
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/0/">Previous</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/28/2018-08-28-lately-record/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">记录一下</span>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">Next</a>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/">
+                <span class="level-item">iOS&amp;amp;macOS 异常捕获</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
