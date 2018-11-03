@@ -172,7 +172,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 264 words)
+                    a minute read (About 211 words)
                 </span>
                 
             </div>
@@ -184,11 +184,12 @@
             
         </h1>
         <div class="content">
-            <h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; name=&quot;uploadfile&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+            <h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="hljs-string">"file"</span> name=<span class="hljs-string">"uploadfile"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>在webview上不能正常的弹出选择器，cef正常。</p>
-<p>解决该问题只需要实现 <figure class="highlight plain hljs"><figcaption><span>的代理方法 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```objc</span><br><span class="line">/*!</span><br><span class="line">    @method webView:runOpenPanelForFileButtonWithResultListener:</span><br><span class="line">    @abstract Display a file open panel for a file input control.</span><br><span class="line">    @param sender The WebView sending the delegate method.</span><br><span class="line">    @param resultListener The object to call back with the results.</span><br><span class="line">    @discussion This method is passed a callback object instead of giving a return</span><br><span class="line">    value so that it can be handled with a sheet.</span><br><span class="line">*/</span><br><span class="line">- (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure></p>
-<p>实现内容</p>
-<figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#pragma mark -  webview</span></span><br><span class="line"><span class="hljs-comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="hljs-comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="hljs-built_in">NSOpenPanel</span>* openDlg = [<span class="hljs-built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="hljs-literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="hljs-literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">if</span> ([openDlg runModal] == <span class="hljs-built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="hljs-built_in">NSMutableArray</span> *files = [[<span class="hljs-built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="WebUIDelegate"><a href="#WebUIDelegate" class="headerlink" title="WebUIDelegate"></a>WebUIDelegate</h3><p>解决该问题只需要实现 <code>WebUIDelegate</code> 的代理方法 </p>
+<figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure>
+<h3 id="实现内容"><a href="#实现内容" class="headerlink" title="实现内容"></a>实现内容</h3><figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#pragma mark -  webview</span></span><br><span class="line"><span class="hljs-comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="hljs-comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="hljs-built_in">NSOpenPanel</span>* openDlg = [<span class="hljs-built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="hljs-literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="hljs-literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">if</span> ([openDlg runModal] == <span class="hljs-built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="hljs-built_in">NSMutableArray</span> *files = [[<span class="hljs-built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc</a></li>
 <li><a href="https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264" target="_blank" rel="noopener">https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264</a></li>
@@ -238,9 +239,10 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
 <p>然后查了一下资料，因为我在创建的时候给文件输入了个名字</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/Users/murphy/.ssh/id_rsa): github</span><br></pre></td></tr></table></figure>
-<p>可以通过<figure class="highlight plain hljs"><figcaption><span>~/.ssh/your_file_name```的方式解决。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">也可以在 ~/.ssh/ 目录下编辑config配置文件</span><br></pre></td></tr></table></figure></p>
-<p>vi config</p>
-<p>Host github.com<br> HostName github.com<br> User git<br> IdentityFile ~/.ssh/github_rsa<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User 就是用户名</span><br><span class="line"></span><br><span class="line">最后验证一下 ```ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>可以通过<code>ssh-add ~/.ssh/your_file_name</code>的方式解决。<br>也可以在 ~/.ssh/ 目录下编辑config配置文件</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi config</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line"> HostName github.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile ~/.ssh/github_rsa</span><br></pre></td></tr></table></figure>
+<p>User 就是用户名</p>
+<p>最后验证一下 <code>ssh -T git@github.com</code></p>
 
         </div>
         
@@ -310,7 +312,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 96 words)
+                    a few seconds read (About 101 words)
                 </span>
                 
             </div>
@@ -318,18 +320,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/08/28/2018-09-30-finder-extension/">macOS Finder Extension</a>
+                <a class="has-link-black-ter" href="/2018/08/28/2018-09-12-git-tag/">Git Tag</a>
             
         </h1>
         <div class="content">
-            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。</p>
-<ul>
-<li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
-<li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
-<li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
-<li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
-<li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
-<li></li>
+            <h1 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h1><ul>
+<li>git tag 列出所有标签 </li>
+<li>git show tag_name 列出该标签的版本信息</li>
+<li>git tag tag_name 创建名字为tag_name的标签</li>
+<li>git push origin tag_name推送制定的标签</li>
+<li>git push origin - -tags 推送本地所有新增的标签</li>
+<li>git tag -d tag_name 删除本地名字为tag_name的标签</li>
+<li>git push origin :refs/tags/tag_name 删除云端名字为tag_name的标签</li>
 </ul>
 
         </div>
@@ -359,7 +361,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 101 words)
+                    a few seconds read (About 96 words)
                 </span>
                 
             </div>
@@ -367,18 +369,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/08/28/2018-09-12-git-tag/">Git Tag</a>
+                <a class="has-link-black-ter" href="/2018/08/28/2018-09-30-finder-extension/">macOS Finder Extension</a>
             
         </h1>
         <div class="content">
-            <h1 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h1><ul>
-<li>git tag 列出所有标签 </li>
-<li>git show tag_name 列出该标签的版本信息</li>
-<li>git tag tag_name 创建名字为tag_name的标签</li>
-<li>git push origin tag_name推送制定的标签</li>
-<li>git push origin - -tags 推送本地所有新增的标签</li>
-<li>git tag -d tag_name 删除本地名字为tag_name的标签</li>
-<li>git push origin :refs/tags/tag_name 删除云端名字为tag_name的标签</li>
+            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。</p>
+<ul>
+<li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
+<li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
+<li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
+<li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
+<li></li>
 </ul>
 
         </div>
@@ -574,7 +576,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/">iOS&amp;amp;macOS 异常捕获</a>
+                <a class="has-link-black-ter" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/">iOS&amp;macOS 异常捕获</a>
             
         </h1>
         <div class="content">
@@ -926,25 +928,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -955,6 +938,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>
@@ -1178,25 +1180,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -1207,6 +1190,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>

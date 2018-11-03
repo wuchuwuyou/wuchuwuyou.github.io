@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候1&amp;lt;input type=&amp;quot;file&amp;quot; name=&amp;quot;uploadfile&amp;quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 解决该问题只需要实现 的代理方法 1234567891011```objc/*!    @me">
+    <meta name="description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候 1&amp;lt;input type=&quot;file&quot; name=&quot;uploadfile&quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 WebUIDelegate解决该问题只需要实现 WebUIDelegate 的代理方法  1- (void)webView:(Web">
 <meta name="keywords" content="Permission denied">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cocoa中WebView允许选择本地上传文件">
 <meta property="og:url" content="http://yoursite.com/2018/11/02/2018-11-02-cocoa-webview-upload-file /index.html">
 <meta property="og:site_name" content="JUST4FUn">
-<meta property="og:description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候1&amp;lt;input type=&amp;quot;file&amp;quot; name=&amp;quot;uploadfile&amp;quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 解决该问题只需要实现 的代理方法 1234567891011```objc/*!    @me">
+<meta property="og:description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候 1&amp;lt;input type=&quot;file&quot; name=&quot;uploadfile&quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 WebUIDelegate解决该问题只需要实现 WebUIDelegate 的代理方法  1- (void)webView:(Web">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-03T09:45:37.807Z">
+<meta property="og:updated_time" content="2018-11-03T10:13:42.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoa中WebView允许选择本地上传文件">
-<meta name="twitter:description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候1&amp;lt;input type=&amp;quot;file&amp;quot; name=&amp;quot;uploadfile&amp;quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 解决该问题只需要实现 的代理方法 1234567891011```objc/*!    @me">
+<meta name="twitter:description" content="Cocoa中WebView允许选择本地上传文件Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候 1&amp;lt;input type=&quot;file&quot; name=&quot;uploadfile&quot;&amp;gt; 在webview上不能正常的弹出选择器，cef正常。 WebUIDelegate解决该问题只需要实现 WebUIDelegate 的代理方法  1- (void)webView:(Web">
 
 
 
@@ -165,7 +165,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 264 words)
+                    a minute read (About 211 words)
                 </span>
                 
             </div>
@@ -177,11 +177,12 @@
             
         </h1>
         <div class="content">
-            <h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; name=&quot;uploadfile&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+            <h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="hljs-string">"file"</span> name=<span class="hljs-string">"uploadfile"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>在webview上不能正常的弹出选择器，cef正常。</p>
-<p>解决该问题只需要实现 <figure class="highlight plain hljs"><figcaption><span>的代理方法 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```objc</span><br><span class="line">/*!</span><br><span class="line">    @method webView:runOpenPanelForFileButtonWithResultListener:</span><br><span class="line">    @abstract Display a file open panel for a file input control.</span><br><span class="line">    @param sender The WebView sending the delegate method.</span><br><span class="line">    @param resultListener The object to call back with the results.</span><br><span class="line">    @discussion This method is passed a callback object instead of giving a return</span><br><span class="line">    value so that it can be handled with a sheet.</span><br><span class="line">*/</span><br><span class="line">- (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure></p>
-<p>实现内容</p>
-<figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#pragma mark -  webview</span></span><br><span class="line"><span class="hljs-comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="hljs-comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="hljs-built_in">NSOpenPanel</span>* openDlg = [<span class="hljs-built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="hljs-literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="hljs-literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">if</span> ([openDlg runModal] == <span class="hljs-built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="hljs-built_in">NSMutableArray</span> *files = [[<span class="hljs-built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="WebUIDelegate"><a href="#WebUIDelegate" class="headerlink" title="WebUIDelegate"></a>WebUIDelegate</h3><p>解决该问题只需要实现 <code>WebUIDelegate</code> 的代理方法 </p>
+<figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure>
+<h3 id="实现内容"><a href="#实现内容" class="headerlink" title="实现内容"></a>实现内容</h3><figure class="highlight objc hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#pragma mark -  webview</span></span><br><span class="line"><span class="hljs-comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="hljs-keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="hljs-keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="hljs-comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="hljs-built_in">NSOpenPanel</span>* openDlg = [<span class="hljs-built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="hljs-literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="hljs-literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">if</span> ([openDlg runModal] == <span class="hljs-built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="hljs-built_in">NSMutableArray</span> *files = [[<span class="hljs-built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc</a></li>
 <li><a href="https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264" target="_blank" rel="noopener">https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264</a></li>
@@ -461,25 +462,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -490,6 +472,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>
@@ -713,25 +714,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -742,6 +724,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>

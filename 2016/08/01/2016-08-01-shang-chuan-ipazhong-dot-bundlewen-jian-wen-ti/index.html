@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:   ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in">
+    <meta name="description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:  ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in b">
 <meta name="keywords" content="ERROR ITMS-90166,ERROR ITMS-90171,Bundle,iOS静态资源包,faceid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="上传ipa包.Bundle文件问题">
 <meta property="og:url" content="http://yoursite.com/2016/08/01/2016-08-01-shang-chuan-ipazhong-dot-bundlewen-jian-wen-ti/index.html">
 <meta property="og:site_name" content="JUST4FUn">
-<meta property="og:description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:   ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in">
+<meta property="og:description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:  ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in b">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-01T14:27:37.016Z">
+<meta property="og:updated_time" content="2018-11-03T10:16:20.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传ipa包.Bundle文件问题">
-<meta name="twitter:description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:   ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in">
+<meta name="twitter:description" content="起因前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。 报错信息:  ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in b">
 
 
 
@@ -180,17 +180,17 @@
             <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。</p>
 <p>报错信息:</p>
 <blockquote>
-</blockquote>
 <p>ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in bundle ‘com.xx.xxxx’ for executable ‘Payload/xx.app/PlugIns/xxxx.bundle/xxxx’.””</p>
-<blockquote>
 </blockquote>
+<blockquote>
 <p>ERROR ITMS-90171: “Invalid Bundle Structure - The binary file ‘xx.app/PlugIns/xxxx.bundle/xxxx’ is not permitted. Your app can’t contain standalone executables or libraries, other than the CFBundleExecutable of supported bundles. Refer to the Bundle Programming Guide at <a href="https://developer.apple.com/go/?id=bundle-structure" target="_blank" rel="noopener">https://developer.apple.com/go/?id=bundle-structure</a> for information on the iOS app bundle structure.”</p>
+</blockquote>
 <p>基本上就是报这两个错误，由于文件都是别人提供的，我就去问了下技术支持，但是没人鸟我啊，所以只能自己解决了。</p>
 <p>刚看到报错信息我就想当然的就去网上搜了。费了很长时间都没有解决，焦头烂额，人也很烦躁。</p>
 <p>后来实在没招了，仔细看了下报错信息，再对比下源文件，bundle 包下有一个可执行文件，报错信息中也确实给指出了问题:</p>
 <blockquote>
-</blockquote>
 <p>Your app can’t contain standalone <code>executables</code> or libraries, other than the CFBundleExecutable of supported bundles.</p>
+</blockquote>
 <h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><ol>
 <li>删除编译 bundle 的 info.plist 中 Executable file</li>
 <li>删除 bundle 所有的可执行文件。</li>
@@ -480,25 +480,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -509,6 +490,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>
@@ -732,25 +732,6 @@
         
         <article class="media">
             
-            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
-                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2018/08/28/2018-09-12-git-tag/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Git Tag">
@@ -761,6 +742,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
                     <a href="/2018/08/28/2018-09-12-git-tag/" class="has-link-black-ter is-size-6">Git Tag</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/technology/">technology</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/28/2018-09-30-finder-extension/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="macOS Finder Extension">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-28T09:16:00.000Z">2018-08-28</time></div>
+                    <a href="/2018/08/28/2018-09-30-finder-extension/" class="has-link-black-ter is-size-6">macOS Finder Extension</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/technology/">technology</a>
                     </p>
