@@ -1,8 +1,10 @@
 ---
 title: 监听键盘鼠标事件
-date: 2018-11-22 18:30:45
-tags:
-published:true
+date: 2018-11-22 18:30:45 +0800
+tags: 
+categories: technology
+published: true
+keywords: NSEvent,
 ---
 # 监听键盘鼠标事件
 今儿要做一个监听全局的键鼠事件的操作，之前使用的都是指监听应用内某一个控件的事件
@@ -13,22 +15,22 @@ published:true
 
 ```
 typedef NS_ENUM(unsigned short, LBKeyboardCode) {
-LBKeyboardCodeLetterC = 8,
-LBKeyboardCodeLetterV = 9,
+    LBKeyboardCodeLetterC = 8,
+    LBKeyboardCodeLetterV = 9,
 };
 - (void)keyDown:(NSEvent *)event {
-if (event.modifierFlags & NSEventModifierFlagCommand) {
-NSLog(@"key down event with command:%@",event);
-if (event.keyCode == LBKeyboardCodeLetterC) {
-// command c
-}else if (event.keyCode == LBKeyboardCodeLetterV) {
-// command v
-}
-[self.nextResponder keyDown:event];
-}else {
-[self.nextResponder keyDown:event];
-NSLog(@"key down event:%@",event);
-}
+    if (event.modifierFlags & NSEventModifierFlagCommand) {
+        NSLog(@"key down event with command:%@",event);
+        if (event.keyCode == LBKeyboardCodeLetterC) {
+        // command c
+        }else if (event.keyCode == LBKeyboardCodeLetterV) {
+        // command v
+        }
+        [self.nextResponder keyDown:event];
+    }else {
+        [self.nextResponder keyDown:event];
+        NSLog(@"key down event:%@",event);
+        }
 }
 ```
 
@@ -45,8 +47,8 @@ CGEventMask eventMask = _monitorEventMask();
 /// 监听全系统的
 self.eventTap = CGEventTapCreate(tapLocation,tapPlacement,tapOptions,eventMask,_captureKeyStroke,(__bridge void * _Nullable)(self));
 if (!self.eventTap) {
-fprintf(stderr, "failed to create event tap\n");
-exit(1);
+    fprintf(stderr, "failed to create event tap\n");
+    exit(1);
 }
 
 
@@ -63,21 +65,21 @@ CFRunLoopRun();
 ```
 CGEventRef _captureKeyStroke(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* userInfo)
 {
-/// 不处理的事件
-if (type == kCGEventNull | type == kCGEventTapDisabledByUserInput) {
-return event;
-}
-LDKMEventMonitor *self = (__bridge LDKMEventMonitor *)userInfo;
-/// 超时的重试
-if (type == kCGEventTapDisabledByTimeout) {
-NSLog(@"Event Taps Disabled! Re-enabling");
-CGEventTapEnable(self.eventTap, true);
-return event;
-}
-/// 转化成 NSEvent 给外部处理
-NSEvent *ev = [NSEvent eventWithCGEvent:event];
+    /// 不处理的事件
+    if (type == kCGEventNull | type == kCGEventTapDisabledByUserInput) {
+        return event;
+    }
+    LDKMEventMonitor *self = (__bridge LDKMEventMonitor *)userInfo;
+    /// 超时的重试
+    if (type == kCGEventTapDisabledByTimeout) {
+        NSLog(@"Event Taps Disabled! Re-enabling");
+        CGEventTapEnable(self.eventTap, true);
+        return event;
+    }
+    /// 转化成 NSEvent 给外部处理
+    NSEvent *ev = [NSEvent eventWithCGEvent:event];
 
-return event;
+    return event;
 }
 
 ```
@@ -89,8 +91,9 @@ return event;
 
 ``` objective-c
 if (type == kCGEventTapDisabledByTimeout) {
-NSLog(@"Event Taps Disabled! Re-enabling");         CGEventTapEnable(eventTap, true);
-return event;
+    NSLog(@"Event Taps Disabled! Re-enabling");
+    CGEventTapEnable(eventTap, true);
+    return event;
 }
 
 ```
