@@ -279,6 +279,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/03/2018-08-03-maccrashreportssymbol/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/2018-08-03-maccrashreportssymbol/" itemprop="url">
+                  macOS崩溃日志符号化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-03 09:58:40" itemprop="dateCreated datePublished" datetime="2018-08-03T09:58:40+08:00">2018-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="分析工具"><a href="#分析工具" class="headerlink" title="分析工具"></a>分析工具</h3><p>网上一大堆文章都是分析iOS的崩溃日志的，针对Mac的特别少，其实基本原理都差不多，就不再详细的描述了。就推荐一个崩溃日志符号化的工具。</p>
+<p><a href="https://mahdi.jp/apps/macsymbolicator" target="_blank" rel="noopener">下载地址</a></p>
+<p><a href="https://github.com/inket/MacSymbolicator" target="_blank" rel="noopener">源码地址</a></p>
+<ul>
+<li>使用方法：<ol>
+<li>将 .crash 文件和 .dSYM 文件放在同一目录下。</li>
+<li>将 .crash 或者 .dSYM 拖入这个工具中，另外一个文件会自动导入</li>
+</ol>
+</li>
+<li>注1：.dSYM 可以在打包时候生产的 .xcarchive 包中找到。</li>
+<li>注2：注意 .crash 和 .dSYM 的UUID要一致</li>
+<li>查看dSYM UUID  <code>xcrun dwarfdump --uuid file_path</code></li>
+<li>.crash 查看UUID 在 Binary Images 的下一行 包名 后面的那一串字符 </li>
+</ul>
+<h3 id="还有一个工具可以参考"><a href="#还有一个工具可以参考" class="headerlink" title="还有一个工具可以参考"></a>还有一个工具可以参考</h3><p><a href="https://github.com/answer-huang/dSYMTools" target="_blank" rel="noopener">dSYMTools</a><br>这个工具也可以符号化崩溃日志，需要手动操作，具体使用方式链接上面说的很清楚了。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="http://www.smileykeith.com/2013/08/09/os-x-crash-symbolication/" target="_blank" rel="noopener">http://www.smileykeith.com/2013/08/09/os-x-crash-symbolication/</a></li>
+<li><a href="https://stackoverflow.com/questions/5842147/how-to-symbolicate-mac-osx-crash-reports-issued-by-apple" target="_blank" rel="noopener">https://stackoverflow.com/questions/5842147/how-to-symbolicate-mac-osx-crash-reports-issued-by-apple</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/07/18/2018-07-18-urlsession-memory-leak/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -342,7 +530,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-03 18:06:36" itemprop="dateModified" datetime="2018-11-03T18:06:36+08:00">2018-11-03</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -518,7 +706,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:41:55" itemprop="dateModified" datetime="2018-11-01T22:41:55+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -708,7 +896,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-03 18:16:20" itemprop="dateModified" datetime="2018-11-03T18:16:20+08:00">2018-11-03</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -899,7 +1087,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:27:37" itemprop="dateModified" datetime="2018-11-01T22:27:37+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1075,7 +1263,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:27:37" itemprop="dateModified" datetime="2018-11-01T22:27:37+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1251,7 +1439,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:27:37" itemprop="dateModified" datetime="2018-11-01T22:27:37+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1427,7 +1615,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:27:37" itemprop="dateModified" datetime="2018-11-01T22:27:37+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1603,7 +1791,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 22:27:37" itemprop="dateModified" datetime="2018-11-01T22:27:37+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1813,7 +2001,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-03 17:38:12" itemprop="dateModified" datetime="2018-11-03T17:38:12+08:00">2018-11-03</time>
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -1942,7 +2130,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1967,6 +2155,19 @@ NSString *tmp = NSTemporaryDirectory();
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           
