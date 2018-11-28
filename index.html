@@ -342,7 +342,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-27 22:38:14" itemprop="dateModified" datetime="2018-11-27T22:38:14+08:00">2018-11-27</time>
+                <time title="Modified: 2018-11-28 21:42:10" itemprop="dateModified" datetime="2018-11-28T21:42:10+08:00">2018-11-28</time>
               
             
           </span>
@@ -394,27 +394,19 @@
 
       
         
+          <h1 id="监听键盘鼠标事件"><a href="#监听键盘鼠标事件" class="headerlink" title="监听键盘鼠标事件"></a>监听键盘鼠标事件</h1><p>今儿要做一个监听全局的键鼠事件的操作，之前使用的都是指监听应用内某一个控件的事件<br>只需要空间是继承 <code>NSResponder</code> 的就可以了，按需实现下面的方法就行了<br><img src="/images/NSResponder.png" alt="NSResponder"><br>
+          <!--noindex-->
           
-            <h1 id="监听键盘鼠标事件"><a href="#监听键盘鼠标事件" class="headerlink" title="监听键盘鼠标事件"></a>监听键盘鼠标事件</h1><p>今儿要做一个监听全局的键鼠事件的操作，之前使用的都是指监听应用内某一个控件的事件<br>只需要空间是继承 <code>NSResponder</code> 的就可以了，按需实现下面的方法就行了<br><img src="/images/NSResponder.png" alt="NSResponder"></p>
-<p>每个键盘上的按键都有一个对应的编码,下面是针对<code>command c</code>和<code>command v</code>的处理,<code>c</code>和<code>v</code>分别对应编码是<code>8</code>和<code>9</code>,<code>command</code>对应的是<code>NSEventModifierFlagCommand</code> 。记得把事件传递下去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(unsigned short, LBKeyboardCode) &#123;</span><br><span class="line">    LBKeyboardCodeLetterC = 8,</span><br><span class="line">    LBKeyboardCodeLetterV = 9,</span><br><span class="line">&#125;;</span><br><span class="line">- (void)keyDown:(NSEvent *)event &#123;</span><br><span class="line">    if (event.modifierFlags &amp; NSEventModifierFlagCommand) &#123;</span><br><span class="line">        NSLog(@&quot;key down event with command:%@&quot;,event);</span><br><span class="line">        if (event.keyCode == LBKeyboardCodeLetterC) &#123;</span><br><span class="line">        // command c</span><br><span class="line">        &#125;else if (event.keyCode == LBKeyboardCodeLetterV) &#123;</span><br><span class="line">        // command v</span><br><span class="line">        &#125;</span><br><span class="line">        [self.nextResponder keyDown:event];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [self.nextResponder keyDown:event];</span><br><span class="line">        NSLog(@&quot;key down event:%@&quot;,event);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="创建监听"><a href="#创建监听" class="headerlink" title="创建监听"></a>创建监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CGEventTapLocation tapLocation = kCGHIDEventTap;</span><br><span class="line">CGEventTapPlacement tapPlacement =kCGHeadInsertEventTap;</span><br><span class="line">CGEventTapOptions tapOptions = kCGEventTapOptionDefault;</span><br><span class="line">CGEventMask eventMask = _monitorEventMask();</span><br><span class="line">//        监听某一个进程的，这个就是监听自己的应用的</span><br><span class="line">//    pid_t pid = [[NSProcessInfo processInfo] processIdentifier];</span><br><span class="line">//    self.eventTap = CGEventTapCreateForPid(pid, tapPlacement, tapOptions, eventMask, _captureKeyStroke, (__bridge void * _Nullable)(self));</span><br><span class="line">/// 监听全系统的</span><br><span class="line">self.eventTap = CGEventTapCreate(tapLocation,tapPlacement,tapOptions,eventMask,_captureKeyStroke,(__bridge void * _Nullable)(self));</span><br><span class="line">if (!self.eventTap) &#123;</span><br><span class="line">    fprintf(stderr, &quot;failed to create event tap\n&quot;);</span><br><span class="line">    exit(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">self.runLoopSource =   CFMachPortCreateRunLoopSource(kCFAllocatorDefault, self.eventTap, 0);</span><br><span class="line"></span><br><span class="line">CFRunLoopAddSource(CFRunLoopGetCurrent(), self.runLoopSource, kCFRunLoopCommonModes);</span><br><span class="line">CGEventTapEnable(self.eventTap, true);</span><br><span class="line"></span><br><span class="line">CFRunLoopRun();</span><br></pre></td></tr></table></figure>
-<h2 id="正常处理"><a href="#正常处理" class="headerlink" title="正常处理"></a>正常处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">CGEventRef _captureKeyStroke(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* userInfo)</span><br><span class="line">&#123;</span><br><span class="line">    /// 不处理的事件</span><br><span class="line">    if (type == kCGEventNull | type == kCGEventTapDisabledByUserInput) &#123;</span><br><span class="line">        return event;</span><br><span class="line">    &#125;</span><br><span class="line">    LDKMEventMonitor *self = (__bridge LDKMEventMonitor *)userInfo;</span><br><span class="line">    /// 超时的重试</span><br><span class="line">    if (type == kCGEventTapDisabledByTimeout) &#123;</span><br><span class="line">        NSLog(@&quot;Event Taps Disabled! Re-enabling&quot;);</span><br><span class="line">        CGEventTapEnable(self.eventTap, true);</span><br><span class="line">        return event;</span><br><span class="line">    &#125;</span><br><span class="line">    /// 转化成 NSEvent 给外部处理</span><br><span class="line">    NSEvent *ev = [NSEvent eventWithCGEvent:event];</span><br><span class="line"></span><br><span class="line">    return event;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="超时处理"><a href="#超时处理" class="headerlink" title="超时处理"></a>超时处理</h2><p>如果回调的处理时间过长，这个事件会被置为失效，重新设置下可以就可以了。<br>由于监听的事件调用特别频繁，还是要注意下对于事件处理的效率问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (type == kCGEventTapDisabledByTimeout) &#123;</span><br><span class="line">    NSLog(@&quot;Event Taps Disabled! Re-enabling&quot;);</span><br><span class="line">    CGEventTapEnable(eventTap, true);</span><br><span class="line">    return event;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>在.plist 文件添加下面的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSAppleEventsUsageDescription&lt;/key&gt;</span><br><span class="line">&lt;string&gt;&lt;/string&gt;</span><br></pre></td></tr></table></figure></p>
-<p>调试的时候比较麻烦，<br>第一次运行会提示：<br><img src="/images/accessibilty_alert.png" alt="accessibilty_alert"><br>需要在<code>system preferences -&gt; security -&gt; privacy -&gt; accessibility</code>里面添加并勾选<br><img src="/images/accessibility.png" alt="accessibility"><br>然后每次调试前都要在这个设置里面先删除，然后再添加勾选，特别蛋疼。暂时还不知道有啥好的解决办法</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://developer.apple.com/documentation/coregraphics/quartz_event_services?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/coregraphics/quartz_event_services?language=objc</a></li>
-<li><a href="https://stackoverflow.com/questions/10365487/segmentation-fault-11-cgeventtap-application-stops-processing-mouse-events-aft" target="_blank" rel="noopener">https://stackoverflow.com/questions/10365487/segmentation-fault-11-cgeventtap-application-stops-processing-mouse-events-aft</a></li>
-<li><a href="https://forums.developer.apple.com/thread/109283" target="_blank" rel="noopener">https://forums.developer.apple.com/thread/109283</a></li>
-<li><a href="https://stackoverflow.com/questions/2969110/cgeventtapcreate-breaks-down-mysteriously-with-key-down-events" target="_blank" rel="noopener">https://stackoverflow.com/questions/2969110/cgeventtapcreate-breaks-down-mysteriously-with-key-down-events</a></li>
-</ul>
-
-          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/11/22/2018-11-22-Listening-keyboard-and-mouse-events-for-macos/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -1053,7 +1045,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+                <time title="Modified: 2018-11-28 21:51:22" itemprop="dateModified" datetime="2018-11-28T21:51:22+08:00">2018-11-28</time>
               
             
           </span>
@@ -1106,14 +1098,13 @@
       
         
           
-            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。</p>
+            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。<br>在工程中新建target的 选 Finder Sync 就行了，默认会创建一些示例代码。<br>Finder Sync 和 主app 通信可以使用 URL Scheme 规则进行数据传递，共享数据的话设置一下 App Groups 。也可以主app启动个本地 <a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="noopener">http server</a> 进行通信也可以。</p>
 <ul>
 <li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
 <li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
 <li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
 <li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
 <li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
-<li></li>
 </ul>
 
           
@@ -2125,19 +2116,6 @@
                 </div>
               
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                    <span class="site-state-item-count">0</span>
-                    <span class="site-state-item-name">tags</span>
-                  
-                </div>
               
             </nav>
           
