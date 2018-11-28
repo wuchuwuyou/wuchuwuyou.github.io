@@ -111,6 +111,17 @@ if (type == kCGEventTapDisabledByTimeout) {
 ![accessibility](/images/accessibility.png)
 然后每次调试前都要在这个设置里面先删除，然后再添加勾选，特别蛋疼。暂时还不知道有啥好的解决办法
 
+## NSEvent
+```objective-c
++ (nullable id)addGlobalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(void (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
++ (nullable id)addLocalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(NSEvent* __nullable (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
++ (void)removeMonitor:(id)eventMonitor NS_AVAILABLE_MAC(10_6);
+
+```
+Global是全局的（除自己的 app 之外的 event），local就是监听自己 app 的 event。
+关于 NSEventMask 暂时不清楚为什么设置的 NSEventMaskAny 有些事件并不能响应，比如触摸板的双指滑动。
+
+
 ## 参考
 - [https://developer.apple.com/documentation/coregraphics/quartz_event_services?language=objc](https://developer.apple.com/documentation/coregraphics/quartz_event_services?language=objc)
 - [https://stackoverflow.com/questions/10365487/segmentation-fault-11-cgeventtap-application-stops-processing-mouse-events-aft](https://stackoverflow.com/questions/10365487/segmentation-fault-11-cgeventtap-application-stops-processing-mouse-events-aft)
