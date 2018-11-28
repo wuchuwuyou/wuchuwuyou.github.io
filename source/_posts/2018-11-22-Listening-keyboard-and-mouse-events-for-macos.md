@@ -10,7 +10,7 @@ keywords: NSEvent,
 今儿要做一个监听全局的键鼠事件的操作，之前使用的都是指监听应用内某一个控件的事件
 只需要空间是继承 `NSResponder` 的就可以了，按需实现下面的方法就行了
 ![NSResponder](/images/NSResponder.png)
-
+<!--More-->
 每个键盘上的按键都有一个对应的编码,下面是针对`command c`和`command v`的处理,`c`和`v`分别对应编码是`8`和`9`,`command`对应的是`NSEventModifierFlagCommand` 。记得把事件传递下去
 
 ```
@@ -100,6 +100,7 @@ if (type == kCGEventTapDisabledByTimeout) {
 
 ## 调试
 在.plist 文件添加下面的内容
+
 ```
 <key>NSAppleEventsUsageDescription</key>
 <string></string>
@@ -107,19 +108,23 @@ if (type == kCGEventTapDisabledByTimeout) {
 调试的时候比较麻烦，
 第一次运行会提示：
 ![accessibilty_alert](/images/accessibilty_alert.png)
-需要在```system preferences -> security -> privacy -> accessibility```里面添加并勾选
+
+需要在 `system preferences -> security -> privacy -> accessibility` 里面添加并勾选
+
 ![accessibility](/images/accessibility.png)
 然后每次调试前都要在这个设置里面先删除，然后再添加勾选，特别蛋疼。暂时还不知道有啥好的解决办法
 
+
 ## NSEvent
+还有可以通过 NSEvent 的API 来做事件监听
 ```objective-c
 + (nullable id)addGlobalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(void (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
 + (nullable id)addLocalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(NSEvent* __nullable (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
 + (void)removeMonitor:(id)eventMonitor NS_AVAILABLE_MAC(10_6);
-
 ```
 Global是全局的（除自己的 app 之外的 event），local就是监听自己 app 的 event。
 关于 NSEventMask 暂时不清楚为什么设置的 NSEventMaskAny 有些事件并不能响应，比如触摸板的双指滑动。
+使用 Global 的时候，会有监听不到其他应用的键盘输入事件的时候，比如微信、QQ等输入事件。
 
 
 ## 参考
