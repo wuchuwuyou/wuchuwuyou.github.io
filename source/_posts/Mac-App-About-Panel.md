@@ -11,13 +11,13 @@ keywords: About Panel, 关于页面
 ![VSCode](/images/vscode.png)
 但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来
 
-```objective-c
+```objc
 - (void)orderFrontStandardAboutPanel:(id)sender;
 
 ```
 也可以使用下面这个方法设置窗口里面要显示的内容
 
-```objective-c
+```objc
 - (void)orderFrontStandardAboutPanelWithOptions:(NSDictionary<NSAboutPanelOptionKey, id> *)optionsDictionary;
 ```
 接受参数是一个字典 key 是 `NSAboutPanelOptionKey`

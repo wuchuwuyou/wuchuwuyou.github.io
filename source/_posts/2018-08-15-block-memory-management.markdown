@@ -11,7 +11,7 @@ block内存管理，先看几个例子
 
  
 
-```objective-c
+```objc
 1.
     int a = 0;
     void (^block)(void) = ^ {
@@ -24,7 +24,7 @@ block内存管理，先看几个例子
 ```
 
 
-```objective-c
+```objc
 2.
     __block int a = 0;
     void (^block)(void) = ^ {
@@ -37,7 +37,7 @@ block内存管理，先看几个例子
 ```
 
 
-```objective-c
+```objc
 3.
     __block int a = 0;
     void (^block)(void) = ^ {
@@ -51,7 +51,7 @@ block内存管理，先看几个例子
 
 输出分别是
 
-```
+``` objc
 1.
 in block a = 0,0x600000252ec0
 after block a = 1,0x7ffee71c8104

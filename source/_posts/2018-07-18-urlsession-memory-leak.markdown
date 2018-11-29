@@ -13,7 +13,7 @@ keywords: URLSession,Memory,Leaks,内存泄露
 ### 定位问题
 通过 Instruments Leaks 观察定位到是一块儿申请的空间没有释放，这个工具最后显示出来的调用栈显示申请的内存没有释放，导致内存泄露。
 
-```
+```objc
  NSData *data = [LBFileManager readDataOffset:self.blockInfo.location withLength:self.blockInfo.length from:path error:error];
 ```
 
@@ -87,11 +87,6 @@ keywords: URLSession,Memory,Leaks,内存泄露
     _session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
 ```
 是解决了内存的问题，但是不使用缓存又很慌，毕竟应用场景是有大量的文件传输
-
-### 总结
-
-
-
 
 -------
 ### 参考

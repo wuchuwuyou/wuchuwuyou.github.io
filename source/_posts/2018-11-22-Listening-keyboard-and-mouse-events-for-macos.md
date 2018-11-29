@@ -36,7 +36,7 @@ typedef NS_ENUM(unsigned short, LBKeyboardCode) {
 
 ## 创建监听
 
-``` objective-c
+``` objc
 CGEventTapLocation tapLocation = kCGHIDEventTap;
 CGEventTapPlacement tapPlacement =kCGHeadInsertEventTap;
 CGEventTapOptions tapOptions = kCGEventTapOptionDefault;
@@ -62,7 +62,7 @@ CFRunLoopRun();
 ```
 ## 正常处理
 
-```
+``` objc
 CGEventRef _captureKeyStroke(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* userInfo)
 {
     /// 不处理的事件
@@ -89,7 +89,7 @@ CGEventRef _captureKeyStroke(CGEventTapProxy proxy, CGEventType type, CGEventRef
 如果回调的处理时间过长，这个事件会被置为失效，重新设置下可以就可以了。
 由于监听的事件调用特别频繁，还是要注意下对于事件处理的效率问题。
 
-``` objective-c
+```objc
 if (type == kCGEventTapDisabledByTimeout) {
     NSLog(@"Event Taps Disabled! Re-enabling");
     CGEventTapEnable(eventTap, true);
@@ -117,7 +117,7 @@ if (type == kCGEventTapDisabledByTimeout) {
 
 ## NSEvent
 还有可以通过 NSEvent 的API 来做事件监听
-```objective-c
+```objc
 + (nullable id)addGlobalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(void (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
 + (nullable id)addLocalMonitorForEventsMatchingMask:(NSEventMask)mask handler:(NSEvent* __nullable (^)(NSEvent*))block NS_AVAILABLE_MAC(10_6);
 + (void)removeMonitor:(id)eventMonitor NS_AVAILABLE_MAC(10_6);
