@@ -279,177 +279,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/29/NSFilePosixPermissions/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/29/NSFilePosixPermissions/" itemprop="url">
-                  Cocoa中设置文件的权限
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-29 23:56:28" itemprop="dateCreated datePublished" datetime="2018-11-29T23:56:28+08:00">2018-11-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-30 00:12:28" itemprop="dateModified" datetime="2018-11-30T00:12:28+08:00">2018-11-30</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在做文件系统的时候需要设置文件权限，之前都是用 <code>NSTask</code> 执行脚本设置文件权限，后来发现一个可以使用 <code>NSFileManager</code> 进行设置。<br><a href="https://developer.apple.com/documentation/foundation/nsfileposixpermissions?language=occ" target="_blank" rel="noopener">NSFilePosixPermissions</a></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSNumber</span> *permissions = [<span class="built_in">NSNumber</span> numberWithUnsignedLong: <span class="number">493</span>];</span><br><span class="line"><span class="built_in">NSDictionary</span> *attributes = [<span class="built_in">NSDictionary</span> dictionaryWithObject:permissions forKey:<span class="built_in">NSFilePosixPermissions</span>];</span><br><span class="line"><span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">[[<span class="built_in">NSFileManager</span> defaultManager] setAttributes:attributes ofItemAtPath:path error:&amp;error];</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/29/Mac-App-About-Panel/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1333,187 +1162,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-08-28-lately-record/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-08-28-lately-record/" itemprop="url">
-                  记录一下
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><ul>
-<li><a href="http://www.tanhao.me/pieces/1580.html/" target="_blank" rel="noopener">自定义NSSearchField</a></li>
-<li><a href="https://stackoverflow.com/questions/19978620/how-to-change-nspopover-background-color-include-triangle-part" target="_blank" rel="noopener">背景色NSPopover</a></li>
-<li><a href="http://www.macdev.io/ebook/cocoaDraw.html" target="_blank" rel="noopener">cocoa绘图</a></li>
-<li><a href="https://www.objccn.io/issue-14-5/" target="_blank" rel="noopener">UIKit =&gt; AppKit</a></li>
-<li><a href="http://adad184.com/2015/08/18/practice-in-i18n-dialling-code/" target="_blank" rel="noopener">国际手机号前缀码</a></li>
-<li><a href="https://stackoverflow.com/questions/9463871/change-selection-color-on-view-based-nstableview" target="_blank" rel="noopener">NSTableView选中行背景色</a></li>
-<li><a href="https://developer.apple.com/library/archive/samplecode/TableViewPlayground/Introduction/Intro.html" target="_blank" rel="noopener">Using View-Based NSTableView Apple Sample Code</a></li>
-<li><a href="http://www.hcs.harvard.edu/~jrus/site/system-bindings.html" target="_blank" rel="noopener">Default Mac OS X System Key Bindings</a></li>
-<li><a href="https://www.zlucy.com/archives/12/" target="_blank" rel="noopener">iOS Icon LaunchImage Size</a></li>
-<li><a href="https://blog.seedlab.io/cocoa-key-event/" target="_blank" rel="noopener">键盘事件相关</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-30-finder-extension/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2042,6 +1690,363 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-08-28-lately-record/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/2018-08-28-lately-record/" itemprop="url">
+                  记录一下
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><ul>
+<li><a href="http://www.tanhao.me/pieces/1580.html/" target="_blank" rel="noopener">自定义NSSearchField</a></li>
+<li><a href="https://stackoverflow.com/questions/19978620/how-to-change-nspopover-background-color-include-triangle-part" target="_blank" rel="noopener">背景色NSPopover</a></li>
+<li><a href="http://www.macdev.io/ebook/cocoaDraw.html" target="_blank" rel="noopener">cocoa绘图</a></li>
+<li><a href="https://www.objccn.io/issue-14-5/" target="_blank" rel="noopener">UIKit =&gt; AppKit</a></li>
+<li><a href="http://adad184.com/2015/08/18/practice-in-i18n-dialling-code/" target="_blank" rel="noopener">国际手机号前缀码</a></li>
+<li><a href="https://stackoverflow.com/questions/9463871/change-selection-color-on-view-based-nstableview" target="_blank" rel="noopener">NSTableView选中行背景色</a></li>
+<li><a href="https://developer.apple.com/library/archive/samplecode/TableViewPlayground/Introduction/Intro.html" target="_blank" rel="noopener">Using View-Based NSTableView Apple Sample Code</a></li>
+<li><a href="http://www.hcs.harvard.edu/~jrus/site/system-bindings.html" target="_blank" rel="noopener">Default Mac OS X System Key Bindings</a></li>
+<li><a href="https://www.zlucy.com/archives/12/" target="_blank" rel="noopener">iOS Icon LaunchImage Size</a></li>
+<li><a href="https://blog.seedlab.io/cocoa-key-event/" target="_blank" rel="noopener">键盘事件相关</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/15/2018-08-15-block-memory-management/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/15/2018-08-15-block-memory-management/" itemprop="url">
+                  block memory management
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-15 11:52:02" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:02+08:00">2018-08-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-30 00:14:03" itemprop="dateModified" datetime="2018-11-30T00:14:03+08:00">2018-11-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>block内存管理，先看几个例子</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">        a = <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<p>输出分别是</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">0</span>,<span class="number">0x600000252ec0</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x7ffee71c8104</span></span><br><span class="line"><span class="number">2.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line"><span class="number">3.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x60000042b118</span></span><br><span class="line">after block a = <span class="number">2</span>,<span class="number">0x60000042b118</span></span><br></pre></td></tr></table></figure>
+<p>输出中不难看出在1中变量 a 在 block 中被 copy 了生成了新的地址。经过 __block修饰符声明的变量在 block 中就是同一个地址。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2089,7 +2094,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
