@@ -279,6 +279,359 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/15/2018-08-15-block-memory-management/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/15/2018-08-15-block-memory-management/" itemprop="url">
+                  block memory management
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-15 11:52:02" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:02+08:00">2018-08-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>block内存管理，先看几个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">    int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2.</span><br><span class="line">    __block int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">3.</span><br><span class="line">    __block int a = 0;</span><br><span class="line">    void (^block)(void) = ^ &#123;</span><br><span class="line">        printf(&quot;in block a = %d,%p\n&quot;,a,&amp;a);</span><br><span class="line">        a = 2;</span><br><span class="line">    &#125;;</span><br><span class="line">    a = 1;</span><br><span class="line">    block();</span><br><span class="line">    printf(&quot;after block a = %d,%p\n&quot;,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<p>输出分别是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">in block a = 0,0x600000252ec0</span><br><span class="line">after block a = 1,0x7ffee71c8104</span><br><span class="line">2.</span><br><span class="line">in block a = 1,0x600000429ef8</span><br><span class="line">after block a = 1,0x600000429ef8</span><br><span class="line">3.</span><br><span class="line">in block a = 1,0x60000042b118</span><br><span class="line">after block a = 2,0x60000042b118</span><br></pre></td></tr></table></figure>
+<p>输出中不难看出在1中变量 a 在 block 中被 copy 了生成了新的地址。经过 __block修饰符声明的变量在 block 中就是同一个地址。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/" itemprop="url">
+                  iOS&macOS 异常捕获
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-13 10:56:02" itemprop="dateCreated datePublished" datetime="2018-08-13T10:56:02+08:00">2018-08-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在弄 crash 日志的处理，找到了几篇文章，也还在研究，记录一下。<br>目前已经能正常记录程序 crash 时的调用栈。<br>代码在<a href="https://gist.github.com/wuchuwuyou/fdd20f64510e7652c7d95f5a22b7d988" target="_blank" rel="noopener">https://gist.github.com/wuchuwuyou/fdd20f64510e7652c7d95f5a22b7d988</a>.<br>目前还不完善，后续继续更新。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://github.com/plausiblelabs/plcrashreporter" target="_blank" rel="noopener">https://github.com/plausiblelabs/plcrashreporter</a></li>
+<li><a href="https://www.jianshu.com/p/29051908c74b" target="_blank" rel="noopener">https://www.jianshu.com/p/29051908c74b</a></li>
+<li><a href="http://www.iosxxx.com/blog/2015-08-29-iosyi-chang-bu-huo.html" target="_blank" rel="noopener">http://www.iosxxx.com/blog/2015-08-29-iosyi-chang-bu-huo.html</a></li>
+<li><a href="https://github.com/kaler/CrashKit" target="_blank" rel="noopener">https://github.com/kaler/CrashKit</a></li>
+<li><a href="https://www.jianshu.com/p/948dd7a0f62d" target="_blank" rel="noopener">https://www.jianshu.com/p/948dd7a0f62d</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/03/2018-08-03-maccrashreportssymbol/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1713,381 +2066,11 @@ NSString *tmp = NSTemporaryDirectory();
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2015/09/15/2015-09-15-zhi-zuo-fa-bu-zi-ji-de-podsdao-cocoapods/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/09/15/2015-09-15-zhi-zuo-fa-bu-zi-ji-de-podsdao-cocoapods/" itemprop="url">
-                  制作发布自己的pods到CocoaPods
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-09-15 17:45:17" itemprop="dateCreated datePublished" datetime="2015-09-15T17:45:17+08:00">2015-09-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>很早之前制作过自己的pods，以前是然后pull request到specs,最近又想弄了，发现现在不再接受pull request了 改为trunk服务了，所以记录一下，免得自己以后也忘记了。</p>
-<p>关于<a href="http://blog.cocoapods.org/CocoaPods-Trunk/" target="_blank" rel="noopener">CocoaPods Trunk</a>这里有介绍。</p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>先升级下CocoaPods版本,0.33以上就行了。</p>
-<pre><code>pod --version看一下版本。
-</code></pre><p>然后注册一下trunk</p>
-<pre><code>pod trunk register your email &apos;your name&apos;
-</code></pre><p><code>your email</code>就是填的邮箱了，<code>your name</code>就写你的名字。</p>
-<p>完了话会收到一份邮件，验证一下。</p>
-<p>然后就可以使用</p>
-<pre><code>pod trunk me     
-</code></pre><p>来查看一下你自己的注册信息了。</p>
-<p>如果你已经制作完了pod并创建修改完了podspec，就直接往下看了，如果没有就在网上搜一下。</p>
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p>都弄完了我们就可以push啦。</p>
-<p>当然了我们先验证下podspec文件喽</p>
-<pre><code>pod spec lint your.podspec
-</code></pre><p>这步要是有问题就看看报错修改喽。没问题就继续</p>
-<pre><code>pod trunk push your.podspec
-</code></pre><p>成功之后呢，我们看一下有没有</p>
-<pre><code>pod search yourpod
-</code></pre><p>就是搜下你提交的pod的名字。<br>我们也可以在本地<code>~/.cocoapods</code>的路径下看一下有没有<code>yourpod.podspec.json</code>这个文件。</p>
-<p>如果之前已经发布过的pod，作者本人声明所有权可以通过<a href="http://blog.cocoapods.org/Claim-Your-Pods/" target="_blank" rel="noopener">Claim Your Pods</a>来看下具体步骤。<a href="https://trunk.cocoapods.org/claims/new" target="_blank" rel="noopener">认领地址</a></p>
-<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>制作的时候也会有很多要注意的地方，我实在是懒的很，还是自己搜搜吧。。。。我这个写的相当粗糙了，网上有很多写的相当具体的了。比如：</p>
-<ul>
-<li><a href="http://nshipster.cn/cocoapods/" target="_blank" rel="noopener">http://nshipster.cn/cocoapods/</a></li>
-<li><a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="noopener">http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/</a></li>
-</ul>
-<hr>
-<h3 id="更新一下"><a href="#更新一下" class="headerlink" title="更新一下:"></a>更新一下:</h3><p>如果使用</p>
-<pre><code>pod trunk XXX
-</code></pre><p>报错 </p>
-<pre><code>[!] Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.
-</code></pre><p>那就再执行下命令 </p>
-<pre><code>pod trunk register your email
-</code></pre><p>然后在你的邮箱里找找邮件打开验证一下，再继续。</p>
-<hr>
-<p>更新</p>
-<p>自己的制作的库要引用其他pod的文件的时候，引用方式头文件报错了，具体就是</p>
-<pre><code>#import&lt;xxxx.h&gt;
-</code></pre><p>这类不行了 换成 </p>
-<pre><code>＃import&lt;xxxx/xxxx.h&gt;
-</code></pre><p>–EOF–</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/1970/01/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/1970/01/01/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 1970-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T00:00:00+08:00">1970-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2130,7 +2113,7 @@ NSString *tmp = NSTemporaryDirectory();
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
