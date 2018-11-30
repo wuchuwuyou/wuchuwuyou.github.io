@@ -11,9 +11,28 @@ keywords: cocoa, 权限
 [NSFilePosixPermissions](https://developer.apple.com/documentation/foundation/nsfileposixpermissions?language=occ)
 
 ```objc
-NSNumber *permissions = [NSNumber numberWithUnsignedLong: 493];
-NSDictionary *attributes = [NSDictionary dictionaryWithObject:permissions forKey:NSFilePosixPermissions];
+
+NSFileManager *fileManager = [NSFileManager defaultManager];
+NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+if (isReadOnly) {
+//        -r--r--r--
+    [attributes setValue:[NSNumber numberWithShort:0444] forKey:NSFilePosixPermissions];
+} else {
+//        -rwxr--r--
+    [attributes setValue:[NSNumber numberWithShort:0744] forKey:NSFilePosixPermissions];
+}
 NSError *error = nil;
-[[NSFileManager defaultManager] setAttributes:attributes ofItemAtPath:path error:&error];
+[fileManager setAttributes:attributes ofItemAtPath:path error:&error];
 
 ```
+
+Linux一般将文件可存取访问的身份分为3个类别：owner、group、others，且3种身份各有read、write、execute等权限 - 没有权限
+-rwxrwxrwx
+8进制
+r 2*2 4 w 2*1 2 x 2*0 1
+
+-r--r--r-- 0444
+-rwxr--r-- 0744
+
+# 参考
+- https://linxz.github.io/tianyizone/linux-chmod-permissions.html
