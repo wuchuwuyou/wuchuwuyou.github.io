@@ -279,6 +279,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/29/NSFilePosixPermissions/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/29/NSFilePosixPermissions/" itemprop="url">
+                  Cocoa中设置文件的权限
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-29 23:56:28" itemprop="dateCreated datePublished" datetime="2018-11-29T23:56:28+08:00">2018-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-30 23:14:21" itemprop="dateModified" datetime="2018-11-30T23:14:21+08:00">2018-11-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在做文件系统的时候需要设置文件权限，之前都是用 <code>NSTask</code> 执行脚本设置文件权限，后来发现一个可以使用 <code>NSFileManager</code> 进行设置。<br><a href="https://developer.apple.com/documentation/foundation/nsfileposixpermissions?language=occ" target="_blank" rel="noopener">NSFilePosixPermissions</a></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">NSFileManager</span> *fileManager = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line"><span class="built_in">NSMutableDictionary</span> *attributes = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line"><span class="keyword">if</span> (isReadOnly) &#123;</span><br><span class="line"><span class="comment">//        -r--r--r--</span></span><br><span class="line">    [attributes setValue:[<span class="built_in">NSNumber</span> numberWithShort:<span class="number">0444</span>] forKey:<span class="built_in">NSFilePosixPermissions</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//        -rwxr--r--</span></span><br><span class="line">    [attributes setValue:[<span class="built_in">NSNumber</span> numberWithShort:<span class="number">0744</span>] forKey:<span class="built_in">NSFilePosixPermissions</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">[fileManager setAttributes:attributes ofItemAtPath:path error:&amp;error];</span><br></pre></td></tr></table></figure>
+<p>Linux一般将文件可存取访问的身份分为3个类别：owner、group、others，且3种身份各有read、write、execute等权限 - 没有权限<br>-rwxrwxrwx<br>8进制<br>r 2<em>2 4 w 2</em>1 2 x 2*0 1</p>
+<p>-r–r–r– 0444<br>-rwxr–r– 0744</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://linxz.github.io/tianyizone/linux-chmod-permissions.html" target="_blank" rel="noopener">https://linxz.github.io/tianyizone/linux-chmod-permissions.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/29/Mac-App-About-Panel/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1162,183 +1338,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-30-finder-extension/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-09-30-finder-extension/" itemprop="url">
-                  macOS Finder Extension
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-28 21:51:22" itemprop="dateModified" datetime="2018-11-28T21:51:22+08:00">2018-11-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。<br>在工程中新建target的 选 Finder Sync 就行了，默认会创建一些示例代码。<br>Finder Sync 和 主app 通信可以使用 URL Scheme 规则进行数据传递，共享数据的话设置一下 App Groups 。也可以主app启动个本地 <a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="noopener">http server</a> 进行通信也可以。</p>
-<ul>
-<li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
-<li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
-<li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
-<li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
-<li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-08-28-lately-record/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1466,6 +1465,183 @@
 <li><a href="http://www.hcs.harvard.edu/~jrus/site/system-bindings.html" target="_blank" rel="noopener">Default Mac OS X System Key Bindings</a></li>
 <li><a href="https://www.zlucy.com/archives/12/" target="_blank" rel="noopener">iOS Icon LaunchImage Size</a></li>
 <li><a href="https://blog.seedlab.io/cocoa-key-event/" target="_blank" rel="noopener">键盘事件相关</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-30-finder-extension/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/2018-09-30-finder-extension/" itemprop="url">
+                  macOS Finder Extension
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-28 21:51:22" itemprop="dateModified" datetime="2018-11-28T21:51:22+08:00">2018-11-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。<br>在工程中新建target的 选 Finder Sync 就行了，默认会创建一些示例代码。<br>Finder Sync 和 主app 通信可以使用 URL Scheme 规则进行数据传递，共享数据的话设置一下 App Groups 。也可以主app启动个本地 <a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="noopener">http server</a> 进行通信也可以。</p>
+<ul>
+<li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
+<li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
+<li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
+<li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
 </ul>
 
           
@@ -1871,182 +2047,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/15/2018-08-15-block-memory-management/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/15/2018-08-15-block-memory-management/" itemprop="url">
-                  block memory management
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-15 11:52:02" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:02+08:00">2018-08-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-30 00:14:03" itemprop="dateModified" datetime="2018-11-30T00:14:03+08:00">2018-11-30</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>block内存管理，先看几个例子</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">        a = <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
-<p>输出分别是</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">0</span>,<span class="number">0x600000252ec0</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x7ffee71c8104</span></span><br><span class="line"><span class="number">2.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line"><span class="number">3.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x60000042b118</span></span><br><span class="line">after block a = <span class="number">2</span>,<span class="number">0x60000042b118</span></span><br></pre></td></tr></table></figure>
-<p>输出中不难看出在1中变量 a 在 block 中被 copy 了生成了新的地址。经过 __block修饰符声明的变量在 block 中就是同一个地址。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2094,7 +2094,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
