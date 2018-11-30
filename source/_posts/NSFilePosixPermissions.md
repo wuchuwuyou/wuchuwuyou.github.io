@@ -3,7 +3,7 @@ title: Cocoa中设置文件的权限
 date: 2018-11-29 23:56:28
 tags:
 categories: technology
-published: false
+published: true
 keywords: cocoa, 权限
 ---
 
