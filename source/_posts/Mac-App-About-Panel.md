@@ -24,7 +24,9 @@ keywords: About Panel, 关于页面, orderFrontStandardAboutPanel, orderFrontSta
 
 `orderFrontStandardAboutPanel `实现就是调用 `orderFrontStandardAboutPanelWithOptions` 传参 nil 实现的。
 
-具体使用方法
+具体使用方法 :
+
+<!--More-->
 
 ```objc
     NSDictionary *info = @{
