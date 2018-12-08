@@ -109,19 +109,24 @@
 
 
   <meta name="description" content="创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来 1- (void)orderFrontStandardAboutPanel:(id)sender; 也可以使用下面这个方法设置窗口里面要显示的内容 1- (void)orderFrontStandardAboutPanelWithOp">
-<meta name="keywords" content="About Panel, 关于页面">
+<meta name="keywords" content="About Panel, 关于页面, orderFrontStandardAboutPanel, orderFrontStandardAboutPanelWithOptions, NSAboutPanelOptionKey">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac App 调用显示关于页面">
 <meta property="og:url" content="https://wuchuwuyou.github.io/2018/11/29/Mac-App-About-Panel/index.html">
 <meta property="og:site_name" content="JUST4FUN">
 <meta property="og:description" content="创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来 1- (void)orderFrontStandardAboutPanel:(id)sender; 也可以使用下面这个方法设置窗口里面要显示的内容 1- (void)orderFrontStandardAboutPanelWithOp">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://wuchuwuyou.github.io/images/vscode.png">
-<meta property="og:updated_time" content="2018-11-29T16:16:12.192Z">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/vscode.png">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/AboutPanel.png">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/Credits.png">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/infoplist.png">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/AboutPanelAction.png">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/category.png">
+<meta property="og:updated_time" content="2018-12-08T03:52:09.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac App 调用显示关于页面">
 <meta name="twitter:description" content="创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来 1- (void)orderFrontStandardAboutPanel:(id)sender; 也可以使用下面这个方法设置窗口里面要显示的内容 1- (void)orderFrontStandardAboutPanelWithOp">
-<meta name="twitter:image" content="https://wuchuwuyou.github.io/images/vscode.png">
+<meta name="twitter:image" content="https://wuchuwuyou.github.io/2018/11/29/images/aboutpanel/vscode.png">
 
 
 
@@ -344,7 +349,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-30 00:16:12" itemprop="dateModified" datetime="2018-11-30T00:16:12+08:00">2018-11-30</time>
+                <time title="Modified: 2018-12-08 11:52:09" itemprop="dateModified" datetime="2018-12-08T11:52:09+08:00">2018-12-08</time>
               
             
           </span>
@@ -395,14 +400,36 @@
       
 
       
-        <p>创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口<br><img src="/images/vscode.png" alt="VSCode"><br>但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来</p>
+        <p>创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口<br><img src="../images/aboutpanel/vscode.png" alt="VSCode"><br>但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)orderFrontStandardAboutPanel:(<span class="keyword">id</span>)sender;</span><br></pre></td></tr></table></figure>
 <p>也可以使用下面这个方法设置窗口里面要显示的内容</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)orderFrontStandardAboutPanelWithOptions:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSAboutPanelOptionKey</span>, <span class="keyword">id</span>&gt; *)optionsDictionary;</span><br></pre></td></tr></table></figure>
 <p>接受参数是一个字典 key 是 <code>NSAboutPanelOptionKey</code></p>
+<p><code>orderFrontStandardAboutPanel</code>实现就是调用 <code>orderFrontStandardAboutPanelWithOptions</code> 传参 nil 实现的。</p>
+<p>具体使用方法 :</p>
+<a id="more"></a>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">NSDictionary</span> *info = @&#123;</span><br><span class="line"><span class="comment">//                           NSAboutPanelOptionCredits: attributedString,</span></span><br><span class="line">                           <span class="built_in">NSAboutPanelOptionApplicationName</span>:<span class="string">@"应用名称"</span>,</span><br><span class="line">                           <span class="built_in">NSAboutPanelOptionApplicationIcon</span>:[<span class="built_in">NSImage</span> imageNamed:<span class="built_in">NSImageNameComputer</span>],</span><br><span class="line">                           <span class="built_in">NSAboutPanelOptionVersion</span>:<span class="string">@"1.0.0"</span>,</span><br><span class="line">                           <span class="built_in">NSAboutPanelOptionApplicationVersion</span>:<span class="string">@"1.0.0.100"</span></span><br><span class="line">                           &#125;;</span><br></pre></td></tr></table></figure>
+<p>显示如下图所示：<br><img src="../images/aboutpanel/AboutPanel.png" alt="AboutPanel"><br>第一行icon 就是应用图标了，<a href="https://developer.apple.com/documentation/appkit/nsapplication/1428479-orderfrontstandardaboutpanelwith?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationIcon</a>可以不设置，默认使用的是 <code>[NSImage imageNamed:@&quot;NSApplicationIcon&quot;]</code></p>
+<p>第二行应用名称，<a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationname?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationName</a>，参数字符串。</p>
+<p>第三行<a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionVersion</a>、第四行<a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationVersion</a></p>
+<p>版本信息(内容长了会自动换行，括号里的就理解为第四行吧)，也可以不填，默认显示分别是 <code>CFBundleVersion</code> <code>CFBundleShortVersionString</code></p>
+<p>第五行，就是上图一长串abc那个，有两种显示方式，当然也可以不设置。<br>第一种:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSString *string = @&quot;aaaaaaaaa\nbbbbbbbbb\ncccccccccc&quot;;</span><br><span class="line"></span><br><span class="line">NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];</span><br><span class="line"></span><br><span class="line">[paragraphStyle setAlignment:NSTextAlignmentCenter];</span><br><span class="line"></span><br><span class="line">   NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];</span><br><span class="line">   </span><br><span class="line">   [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [string length])];</span><br></pre></td></tr></table></figure>
+<p>通过关键字 <a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptioncredits?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionCredits</a> 设置value就可以了，这个只接收 NSAttributedString 类型的参数，其他的会报错。</p>
+<p>第二种:<br>在项目中添加名称为Credits.rtf(这个文件也是可以多国语言的)的文件，在里面添加想要添加内容，如下图所示<br><img src="../images/aboutpanel/Credits.png" alt="Credits"></p>
+<p>最后一行 copyright 信息，是读取项目中info.plist的<code>copyright</code>字段来显示的，文档上没有提及单独设置的地方。</p>
+<p><img src="../images/aboutpanel/infoplist.png" alt="infoplist"></p>
+<p>最后 MainMenu.xib 默认创建出了关于的item 并且绑定了事件<br><img src="../images/aboutpanel/AboutPanelAction.png" alt="AboutPanelAction"><br>我们可以重新绑定个事件，做自己的操作，也可以添加个 NSApplication 的类别，重写 <code>- (void)orderFrontStandardAboutPanel:(id)sender;</code> 方法<br><img src="../images/aboutpanel/category.png" alt="AboutPanelAction"></p>
 <blockquote>
-<p><a href="https://developer.apple.com/documentation/appkit/nsapplication/1428479-orderfrontstandardaboutpanelwith?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationIcon</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationname?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationName</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationVersion</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptioncredits?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionCredits</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionVersion</a></p>
+<ul>
+<li><a href="https://developer.apple.com/documentation/appkit/nsapplication/1428479-orderfrontstandardaboutpanelwith?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationIcon</a></li>
+<li><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationname?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationName</a></li>
+<li><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationVersion</a></li>
+<li><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptioncredits?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionCredits</a></li>
+<li><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionVersion</a></li>
+</ul>
 </blockquote>
+<p>只支持10.13以上</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://developer.apple.com/documentation/appkit/nsapplication/1428724-orderfrontstandardaboutpanel?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/appkit/nsapplication/1428724-orderfrontstandardaboutpanel?language=objc</a></li>
 </ul>
@@ -423,6 +450,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/macOS/" rel="tag"># macOS</a>
+          
+        </div>
       
 
       
@@ -540,6 +573,19 @@
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           

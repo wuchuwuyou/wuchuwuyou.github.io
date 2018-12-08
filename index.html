@@ -518,7 +518,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-30 00:16:12" itemprop="dateModified" datetime="2018-11-30T00:16:12+08:00">2018-11-30</time>
+                <time title="Modified: 2018-12-08 11:52:09" itemprop="dateModified" datetime="2018-12-08T11:52:09+08:00">2018-12-08</time>
               
             
           </span>
@@ -570,20 +570,22 @@
 
       
         
-          
-            <p>创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口<br><img src="/images/vscode.png" alt="VSCode"><br>但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来</p>
+          <p>创建新项目的时候系统会自动创建一个显示页面，比如 vs code 的，这都是默认显示的窗口<br><img src="../images/aboutpanel/vscode.png" alt="VSCode"><br>但是我们想手动调用这个默认窗口的话，系统也提供了一些方法，可以直接显示出来</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)orderFrontStandardAboutPanel:(<span class="keyword">id</span>)sender;</span><br></pre></td></tr></table></figure>
 <p>也可以使用下面这个方法设置窗口里面要显示的内容</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)orderFrontStandardAboutPanelWithOptions:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSAboutPanelOptionKey</span>, <span class="keyword">id</span>&gt; *)optionsDictionary;</span><br></pre></td></tr></table></figure>
 <p>接受参数是一个字典 key 是 <code>NSAboutPanelOptionKey</code></p>
-<blockquote>
-<p><a href="https://developer.apple.com/documentation/appkit/nsapplication/1428479-orderfrontstandardaboutpanelwith?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationIcon</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationname?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationName</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionapplicationversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionApplicationVersion</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptioncredits?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionCredits</a><br><a href="https://developer.apple.com/documentation/appkit/nsaboutpaneloptionversion?language=objc" target="_blank" rel="noopener">NSAboutPanelOptionVersion</a></p>
-</blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://developer.apple.com/documentation/appkit/nsapplication/1428724-orderfrontstandardaboutpanel?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/appkit/nsapplication/1428724-orderfrontstandardaboutpanel?language=objc</a></li>
-</ul>
-
+<p><code>orderFrontStandardAboutPanel</code>实现就是调用 <code>orderFrontStandardAboutPanelWithOptions</code> 传参 nil 实现的。</p>
+<p>具体使用方法 :</p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/11/29/Mac-App-About-Panel/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
     </div>
@@ -2119,6 +2121,19 @@
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           
