@@ -279,6 +279,337 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/17/WebView-WebScriptObject/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/WebView-WebScriptObject/" itemprop="url">
+                  一个WebView的循环引用问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-17 22:53:39 / Modified: 23:18:50" itemprop="dateCreated datePublished" datetime="2018-12-17T22:53:39+08:00">2018-12-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="macOS-WebView-JSToNative"><a href="#macOS-WebView-JSToNative" class="headerlink" title="macOS WebView JSToNative"></a>macOS WebView JSToNative</h1><p>项目里通过使用的是WebView 并且通过 <code>- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject</code>  这个方法实现JS到Native的通信。</p>
+<p>项目中代码如下:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.mainWebView.frameLoadDelegate = <span class="keyword">self</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta"># pragma mark -  WebFrameLoadDelegate</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject &#123;</span><br><span class="line">	[windowScriptObject setValue:<span class="keyword">self</span> forKey:<span class="string">@"jsToNative"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样会形成循环引用，<code>self =&gt; self.mainWebView =&gt; self.mainWebView. windowScriptObject =&gt; self</code></p>
+<p>可以如下修改解决问题：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.jsToNativeObject = [[JSToNativeObject alloc] initWithDelegate:<span class="keyword">self</span>];</span><br><span class="line"></span><br><span class="line"><span class="meta"># pragma mark -  WebFrameLoadDelegate</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject &#123;</span><br><span class="line">	[windowScriptObject setValue:<span class="keyword">self</span>.jsToNativeObject forKey:<span class="string">@"jsToNative"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JSToNativeObject.h</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">JSToNativeObject</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;)delegate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">weak</span>,<span class="keyword">readonly</span>) <span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;delegate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>JSToNativeObject.m</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;)delegate &#123;</span><br><span class="line">	<span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.delegate = delegate;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)invokeDefaultMethodWithArguments:(<span class="built_in">NSArray</span> *)arguments &#123;</span><br><span class="line">	<span class="keyword">if</span> (arguments.count &lt; <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">NSString</span> *methodStr = arguments[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">NSString</span> *paramsStr = arguments[<span class="number">1</span>];</span><br><span class="line">	  </span><br><span class="line">	SEL sel;</span><br><span class="line">	<span class="keyword">if</span> ([methodStr isEqualToString:<span class="string">@"xxxxxx"</span>]) &#123;</span><br><span class="line">		sel = <span class="keyword">@selector</span>(xxxxxx:);</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		sel = <span class="literal">nil</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> [<span class="keyword">self</span> handleSelector:sel withObject: paramsStr];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)handleSelector:(SEL)aSelector withObject:(<span class="built_in">NSDictionary</span> *)params &#123;</span><br><span class="line">	<span class="keyword">if</span> (aSelector != <span class="literal">nil</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> ([<span class="keyword">self</span>.delegate respondsToSelector:aSelector]) &#123;</span><br><span class="line">			<span class="comment">// 方法签名(方法的描述)</span></span><br><span class="line">			<span class="built_in">NSMethodSignature</span> *signature = [[<span class="keyword">self</span>.delegate <span class="keyword">class</span>] instanceMethodSignatureForSelector:aSelector];</span><br><span class="line">			<span class="keyword">if</span> (signature == <span class="literal">nil</span>) &#123;</span><br><span class="line">				<span class="built_in">NSLog</span>(<span class="string">@"方法签名不存在"</span>);</span><br><span class="line">				<span class="comment">//可以抛出异常也可以不操作。</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="meta"># pragma clang diagnostic push</span></span><br><span class="line"><span class="meta"># pragma clang diagnostic ignored <span class="meta-string">"-Warc-performSelector-leaks"</span></span></span><br><span class="line">			<span class="keyword">id</span> obj = [<span class="keyword">self</span>.delegate performSelector:aSelector withObject:params];</span><br><span class="line"><span class="meta"># pragma clang diagnostic pop</span></span><br><span class="line">			<span class="comment">///  有返回值类型，才去获得返回值 void v  objc @</span></span><br><span class="line">			<span class="keyword">if</span> (signature.methodReturnLength) &#123;</span><br><span class="line">				<span class="keyword">return</span> obj;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="方法废弃"><a href="#方法废弃" class="headerlink" title="方法废弃"></a>方法废弃</h1><p>问题是解决了，但是上面的web view 的<code>- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject</code>已经废弃了 官方推荐使用 <code>- (void)webView:(WebView *)webView didClearWindowObject:(WebScriptObject *)windowObject forFrame:(WebFrame *)frame</code>;<br>又但是 WebView 官方也不推荐使用了支持到10.14了，让大家使用 <code>WKWebView (WK_EXTERN API_AVAILABLE(macosx(10.10), ios(8.0)))</code>。另推荐使用 <code>JavaScriptCore</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/17/Go-Test/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/Go-Test/" itemprop="url">
+                  Go Test
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-17 22:44:34 / Modified: 22:52:44" itemprop="dateCreated datePublished" datetime="2018-12-17T22:44:34+08:00">2018-12-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="GO-测试"><a href="#GO-测试" class="headerlink" title="GO 测试"></a>GO 测试</h1><p>Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example)</p>
+<p>测试文件命名规范为要测试的文件加上<code>_test</code>后缀，即如果被测试文件为<code>abc.go</code>则测试文件名为<code>abc_test.go</code></p>
+<p>每个测试文件必须至少包含一个测试函数</p>
+<p>功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个<code>*testing.T</code>类型的参数声明，例如  <code>func TestHello(t *testing.T) {}</code></p>
+<p>性能测试函数，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是 <code>*testing.B</code> 类型的，例如 <code>func BenchmarkHello(b *testing.B) {}</code></p>
+<p>示例测试函数，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/29/NSFilePosixPermissions/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1340,7 +1671,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-08-28-lately-record/">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-12-cocoapods-private-repo/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Murphy">
@@ -1359,8 +1690,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/28/2018-08-28-lately-record/" itemprop="url">
-                  记录一下
+                <a class="post-title-link" href="/2018/08/28/2018-09-12-cocoapods-private-repo/" itemprop="url">
+                  CocoaPods私有库
                 </a>
               
             
@@ -1456,18 +1787,25 @@
       
         
           
-            <h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><ul>
-<li><a href="http://www.tanhao.me/pieces/1580.html/" target="_blank" rel="noopener">自定义NSSearchField</a></li>
-<li><a href="https://stackoverflow.com/questions/19978620/how-to-change-nspopover-background-color-include-triangle-part" target="_blank" rel="noopener">背景色NSPopover</a></li>
-<li><a href="http://www.macdev.io/ebook/cocoaDraw.html" target="_blank" rel="noopener">cocoa绘图</a></li>
-<li><a href="https://www.objccn.io/issue-14-5/" target="_blank" rel="noopener">UIKit =&gt; AppKit</a></li>
-<li><a href="http://adad184.com/2015/08/18/practice-in-i18n-dialling-code/" target="_blank" rel="noopener">国际手机号前缀码</a></li>
-<li><a href="https://stackoverflow.com/questions/9463871/change-selection-color-on-view-based-nstableview" target="_blank" rel="noopener">NSTableView选中行背景色</a></li>
-<li><a href="https://developer.apple.com/library/archive/samplecode/TableViewPlayground/Introduction/Intro.html" target="_blank" rel="noopener">Using View-Based NSTableView Apple Sample Code</a></li>
-<li><a href="http://www.hcs.harvard.edu/~jrus/site/system-bindings.html" target="_blank" rel="noopener">Default Mac OS X System Key Bindings</a></li>
-<li><a href="https://www.zlucy.com/archives/12/" target="_blank" rel="noopener">iOS Icon LaunchImage Size</a></li>
-<li><a href="https://blog.seedlab.io/cocoa-key-event/" target="_blank" rel="noopener">键盘事件相关</a></li>
+            <p>#CocoaPods私有库</p>
+<h3 id="私有库版本库"><a href="#私有库版本库" class="headerlink" title="私有库版本库"></a>私有库版本库</h3><ul>
+<li>创建版本库（repo）私有库的一个索引 建一个git空仓库</li>
+<li>执行<code>Pod repo list</code>列出本地的所有的版本库</li>
+<li>执行<code>pod repo add repo的名字 git地址</code>将索引库添加到本地</li>
 </ul>
+<h3 id="创建私有库项目"><a href="#创建私有库项目" class="headerlink" title="创建私有库项目"></a>创建私有库项目</h3><p>创建项目<code>pod lib create &lt;项目名称&gt;</code> Assets 资源文件 Class 源码文件。<br>根据命令行提示一步步执行，然后就写代码招呼吧。<br>提交代码的时候记得添加<a href="./2018-09-12-git-tag.md">tag</a>一起提交 与 <code>.podspec</code>里面的version一致<br><code>pod lib lint</code>  检查配置文件，通过以后可以提交<br><code>pod repo push  版本库名称 组件库名字.podspec</code></p>
+<blockquote>
+<p>pod lib lint 和 pod spec lint 命令分别是对podspec的本地校验和远程校验</p>
+</blockquote>
+<h3 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h3><p>自己写的cocoapods库中引用其他第三方库只需要在<code>.podspec</code>文件中设置 <code>s.dependency &#39;AFNetworking&#39;, &#39;~&gt; 2.3&#39;</code>这样的就可以了。但是如果你依赖的是自己的私有库，就会有点问题，需要麻烦一点弄一下。</p>
+<h3 id="依赖私有库"><a href="#依赖私有库" class="headerlink" title="依赖私有库"></a>依赖私有库</h3><p>私有库配置依赖中引用其他私有库，在<code>.podspec</code> 中的写法和上面一样 <code>s.dependency &#39;LDKeychain&#39;, &#39;~&gt; 0.1.0&#39; |LDKeychain就是我自己的之前写的私有库</code>，通过 dependency 引用私有库文件。</p>
+<p>但是我们在验证<code>.podspec</code>和往自己的私有repo中提交的时候会报错。<br>只需要如下操作 </p>
+<blockquote>
+<p>DeviceUniqueKey.podspec 为我的创建的私有库，repo_name是版本库的名字</p>
+</blockquote>
+<p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br><code>pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
+<p>pod repo push 时也需要在命令上加上–sources 例如：<br><code>pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
+<p>完事记得<code>pod repo update 版本库名称</code>一下</p>
 
           
         
@@ -1683,372 +2021,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-12-git-tag/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-09-12-git-tag/" itemprop="url">
-                  Git Tag
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h1><ul>
-<li>git tag 列出所有标签 </li>
-<li>git show tag_name 列出该标签的版本信息</li>
-<li>git tag tag_name 创建名字为tag_name的标签</li>
-<li>git push origin tag_name推送制定的标签</li>
-<li>git push origin - -tags 推送本地所有新增的标签</li>
-<li>git tag -d tag_name 删除本地名字为tag_name的标签</li>
-<li>git push origin :refs/tags/tag_name 删除云端名字为tag_name的标签</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-12-cocoapods-private-repo/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-09-12-cocoapods-private-repo/" itemprop="url">
-                  CocoaPods私有库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#CocoaPods私有库</p>
-<h3 id="私有库版本库"><a href="#私有库版本库" class="headerlink" title="私有库版本库"></a>私有库版本库</h3><ul>
-<li>创建版本库（repo）私有库的一个索引 建一个git空仓库</li>
-<li>执行<code>Pod repo list</code>列出本地的所有的版本库</li>
-<li>执行<code>pod repo add repo的名字 git地址</code>将索引库添加到本地</li>
-</ul>
-<h3 id="创建私有库项目"><a href="#创建私有库项目" class="headerlink" title="创建私有库项目"></a>创建私有库项目</h3><p>创建项目<code>pod lib create &lt;项目名称&gt;</code> Assets 资源文件 Class 源码文件。<br>根据命令行提示一步步执行，然后就写代码招呼吧。<br>提交代码的时候记得添加<a href="./2018-09-12-git-tag.md">tag</a>一起提交 与 <code>.podspec</code>里面的version一致<br><code>pod lib lint</code>  检查配置文件，通过以后可以提交<br><code>pod repo push  版本库名称 组件库名字.podspec</code></p>
-<blockquote>
-<p>pod lib lint 和 pod spec lint 命令分别是对podspec的本地校验和远程校验</p>
-</blockquote>
-<h3 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h3><p>自己写的cocoapods库中引用其他第三方库只需要在<code>.podspec</code>文件中设置 <code>s.dependency &#39;AFNetworking&#39;, &#39;~&gt; 2.3&#39;</code>这样的就可以了。但是如果你依赖的是自己的私有库，就会有点问题，需要麻烦一点弄一下。</p>
-<h3 id="依赖私有库"><a href="#依赖私有库" class="headerlink" title="依赖私有库"></a>依赖私有库</h3><p>私有库配置依赖中引用其他私有库，在<code>.podspec</code> 中的写法和上面一样 <code>s.dependency &#39;LDKeychain&#39;, &#39;~&gt; 0.1.0&#39; |LDKeychain就是我自己的之前写的私有库</code>，通过 dependency 引用私有库文件。</p>
-<p>但是我们在验证<code>.podspec</code>和往自己的私有repo中提交的时候会报错。<br>只需要如下操作 </p>
-<blockquote>
-<p>DeviceUniqueKey.podspec 为我的创建的私有库，repo_name是版本库的名字</p>
-</blockquote>
-<p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br><code>pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
-<p>pod repo push 时也需要在命令上加上–sources 例如：<br><code>pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
-<p>完事记得<code>pod repo update 版本库名称</code>一下</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2096,7 +2068,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2130,7 +2102,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>

@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="GO 测试Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example) 测试文件命名规范为要测试的文件加上_test后缀，即如果被测试文件为abc.go则测试文件名为abc_test.go 每个测试文件必须至少包含一个测试函数 功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个*testing.T类型的参数声明，例如  fu">
+<meta name="keywords" content="GO,test,测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://wuchuwuyou.github.io/1970/01/01/hello-world/index.html">
+<meta property="og:title" content="Go Test">
+<meta property="og:url" content="https://wuchuwuyou.github.io/2018/12/17/Go-Test/index.html">
 <meta property="og:site_name" content="JUST4FUN">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="GO 测试Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example) 测试文件命名规范为要测试的文件加上_test后缀，即如果被测试文件为abc.go则测试文件名为abc_test.go 每个测试文件必须至少包含一个测试函数 功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个*testing.T类型的参数声明，例如  fu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-27T14:19:33.771Z">
+<meta property="og:updated_time" content="2018-12-17T14:52:44.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Go Test">
+<meta name="twitter:description" content="GO 测试Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example) 测试文件命名规范为要测试的文件加上_test后缀，即如果被测试文件为abc.go则测试文件名为abc_test.go 每个测试文件必须至少包含一个测试函数 功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个*testing.T类型的参数声明，例如  fu">
 
 
 
 
 
 
-  <link rel="canonical" href="https://wuchuwuyou.github.io/1970/01/01/hello-world/">
+  <link rel="canonical" href="https://wuchuwuyou.github.io/2018/12/17/Go-Test/">
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | JUST4FUN</title>
+  <title>Go Test | JUST4FUN</title>
   
 
 
@@ -282,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/1970/01/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/17/Go-Test/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Murphy">
@@ -299,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">Go Test
               
             
           </h1>
@@ -324,28 +325,34 @@
                 
               
 
-              <time title="Created: 1970-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T00:00:00+08:00">1970-01-01</time>
+              <time title="Created: 2018-12-17 22:44:34 / Modified: 22:52:44" itemprop="dateCreated datePublished" datetime="2018-12-17T22:44:34+08:00">2018-12-17</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -374,15 +381,12 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="GO-测试"><a href="#GO-测试" class="headerlink" title="GO 测试"></a>GO 测试</h1><p>Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example)</p>
+<p>测试文件命名规范为要测试的文件加上<code>_test</code>后缀，即如果被测试文件为<code>abc.go</code>则测试文件名为<code>abc_test.go</code></p>
+<p>每个测试文件必须至少包含一个测试函数</p>
+<p>功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个<code>*testing.T</code>类型的参数声明，例如  <code>func TestHello(t *testing.T) {}</code></p>
+<p>性能测试函数，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是 <code>*testing.B</code> 类型的，例如 <code>func BenchmarkHello(b *testing.B) {}</code></p>
+<p>示例测试函数，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
 
       
     </div>
@@ -401,6 +405,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+        </div>
+      
 
       
       
@@ -410,14 +420,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/29/NSFilePosixPermissions/" rel="next" title="Cocoa中设置文件的权限">
+                <i class="fa fa-chevron-left"></i> Cocoa中设置文件的权限
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/15/2015-09-15-zhi-zuo-fa-bu-zi-ji-de-podsdao-cocoapods/" rel="prev" title="制作发布自己的pods到CocoaPods">
-                制作发布自己的pods到CocoaPods <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/17/WebView-WebScriptObject/" rel="prev" title="一个WebView的循环引用问题">
+                一个WebView的循环引用问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GO-测试"><span class="nav-number">1.</span> <span class="nav-text">GO 测试</span></a></li></ol></div>
             
 
           </div>
