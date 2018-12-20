@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/17/WebView-WebScriptObject/">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/21/WebView-Debugger-for-macOS/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Murphy">
@@ -322,8 +322,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/17/WebView-WebScriptObject/" itemprop="url">
-                  一个WebView的循环引用问题
+                <a class="post-title-link" href="/2018/12/21/WebView-Debugger-for-macOS/" itemprop="url">
+                  WebView Debugger for macOS
                 </a>
               
             
@@ -349,7 +349,7 @@
                 
               
 
-              <time title="Created: 2018-12-17 22:53:39 / Modified: 23:18:50" itemprop="dateCreated datePublished" datetime="2018-12-17T22:53:39+08:00">2018-12-17</time>
+              <time title="Created: 2018-12-21 00:16:00 / Modified: 00:36:50" itemprop="dateCreated datePublished" datetime="2018-12-21T00:16:00+08:00">2018-12-21</time>
             
 
             
@@ -407,19 +407,352 @@
       
         
           
-            <h1 id="macOS-WebView-JSToNative"><a href="#macOS-WebView-JSToNative" class="headerlink" title="macOS WebView JSToNative"></a>macOS WebView JSToNative</h1><p>项目里通过使用的是WebView 并且通过 <code>- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject</code>  这个方法实现JS到Native的通信。</p>
+            <h1 id="mac-上调试应用的-Webview-界面"><a href="#mac-上调试应用的-Webview-界面" class="headerlink" title="mac 上调试应用的 Webview 界面"></a>mac 上调试应用的 Webview 界面</h1><h3 id="开启方式"><a href="#开启方式" class="headerlink" title="开启方式"></a>开启方式</h3><p>safari 开启 Preferences -&gt; Advanced -&gt;Show Develop menu in menu bar</p>
+<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p><img src="../images/WebView-Debugger-for-macOS.png" alt="Debugger"><br>Debug 模式下直接就能显示出来，选中就可以开始调试了。</p>
+<p>但是在 Release 模式下，比如给前端开发的测试包，就没法使用了。在 Xcode 工程中的 <code>LenovoBox.entitlements</code> 文件中添加下面两行<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.get-task-allow<span class="tag">&lt;/<span class="name">key</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/21/performSelector/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/21/performSelector/" itemprop="url">
+                  performSelector
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-21 00:02:24 / Modified: 00:40:27" itemprop="dateCreated datePublished" datetime="2018-12-21T00:02:24+08:00">2018-12-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="performSelector-的一些问题"><a href="#performSelector-的一些问题" class="headerlink" title="performSelector 的一些问题"></a>performSelector 的一些问题</h1><p>代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)methodNoReturnAndArgument &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,<span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)methodNoReturnWithArgument:(<span class="keyword">id</span>)obj &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"argument:%@"</span>,obj);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,<span class="built_in">NSStringFromSelector</span>(_cmd));</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">id</span>)methodReturnWithArgument:(<span class="keyword">id</span>)obj &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"argument:%@"</span>,obj);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"return:%@"</span>,obj);</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> SEL sel1 = <span class="keyword">@selector</span>(methodNoReturnAndArgument);</span><br><span class="line">    SEL sel2 = <span class="keyword">@selector</span>(methodNoReturnWithArgument:);</span><br><span class="line">    SEL sel3 = <span class="keyword">@selector</span>(methodReturnWithArgument:);</span><br><span class="line">    <span class="keyword">id</span> obj1 = <span class="string">@"1"</span>;</span><br><span class="line">    <span class="keyword">id</span> obj2 = <span class="string">@"2"</span>;</span><br><span class="line">    <span class="keyword">id</span> obj3 = <span class="string">@"3"</span>;</span><br><span class="line">    <span class="keyword">id</span> ret1;</span><br><span class="line">    <span class="keyword">id</span> ret2;</span><br><span class="line">    <span class="keyword">id</span> ret3;</span><br><span class="line">    [<span class="keyword">self</span> performSelector:sel1];</span><br><span class="line">    [<span class="keyword">self</span> performSelector:sel1 withObject:<span class="literal">nil</span>];</span><br><span class="line">    [<span class="keyword">self</span> performSelector:sel1 withObject:obj1];</span><br><span class="line">    <span class="comment">//ret1 = [self performSelector:sel1 withObject:obj1]; // 崩溃</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    [self performSelector:sel2]; // 崩溃</span></span><br><span class="line">    [<span class="keyword">self</span> performSelector:sel2 withObject:<span class="literal">nil</span>];</span><br><span class="line"><span class="comment">//    ret2 = [self performSelector:sel2 withObject:nil]; // 崩溃</span></span><br><span class="line">    ret2 = [<span class="keyword">self</span> performSelector:sel2 withObject:obj2];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    [self performSelector:sel3];    // 崩溃</span></span><br><span class="line">    [<span class="keyword">self</span> performSelector:sel3 withObject:<span class="literal">nil</span>];</span><br><span class="line">    ret3 = [<span class="keyword">self</span> performSelector:sel3 withObject:<span class="literal">nil</span>];</span><br><span class="line">    ret3 = [<span class="keyword">self</span> performSelector:sel3 withObject:obj3];</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/17/WebView-WebScriptObject/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/WebView-WebScriptObject/" itemprop="url">
+                  一个WebView的循环引用问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-17 22:53:39" itemprop="dateCreated datePublished" datetime="2018-12-17T22:53:39+08:00">2018-12-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-21 00:38:10" itemprop="dateModified" datetime="2018-12-21T00:38:10+08:00">2018-12-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="macOS-WebView-JSToNative"><a href="#macOS-WebView-JSToNative" class="headerlink" title="macOS WebView JSToNative"></a>macOS WebView JSToNative</h1><p>项目里通过使用的是WebView 并且通过 <code>- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject</code>  这个方法实现JS到Native的通信。</p>
 <p>项目中代码如下:</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.mainWebView.frameLoadDelegate = <span class="keyword">self</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta"># pragma mark -  WebFrameLoadDelegate</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject &#123;</span><br><span class="line">	[windowScriptObject setValue:<span class="keyword">self</span> forKey:<span class="string">@"jsToNative"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样会形成循环引用，<code>self =&gt; self.mainWebView =&gt; self.mainWebView. windowScriptObject =&gt; self</code></p>
 <p>可以如下修改解决问题：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.jsToNativeObject = [[JSToNativeObject alloc] initWithDelegate:<span class="keyword">self</span>];</span><br><span class="line"></span><br><span class="line"><span class="meta"># pragma mark -  WebFrameLoadDelegate</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject &#123;</span><br><span class="line">	[windowScriptObject setValue:<span class="keyword">self</span>.jsToNativeObject forKey:<span class="string">@"jsToNative"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>JSToNativeObject.h</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">JSToNativeObject</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;)delegate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">weak</span>,<span class="keyword">readonly</span>) <span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;delegate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>JSToNativeObject.m</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">instancetype</span>)initWithDelegate:(<span class="keyword">id</span>&lt;JSToNativeWebViewProtocol&gt;)delegate &#123;</span><br><span class="line">	<span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">		<span class="keyword">self</span>.delegate = delegate;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)invokeDefaultMethodWithArguments:(<span class="built_in">NSArray</span> *)arguments &#123;</span><br><span class="line">	<span class="keyword">if</span> (arguments.count &lt; <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">NSString</span> *methodStr = arguments[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">NSString</span> *paramsStr = arguments[<span class="number">1</span>];</span><br><span class="line">	  </span><br><span class="line">	SEL sel;</span><br><span class="line">	<span class="keyword">if</span> ([methodStr isEqualToString:<span class="string">@"xxxxxx"</span>]) &#123;</span><br><span class="line">		sel = <span class="keyword">@selector</span>(xxxxxx:);</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		sel = <span class="literal">nil</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> [<span class="keyword">self</span> handleSelector:sel withObject: paramsStr];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)handleSelector:(SEL)aSelector withObject:(<span class="built_in">NSDictionary</span> *)params &#123;</span><br><span class="line">	<span class="keyword">if</span> (aSelector != <span class="literal">nil</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> ([<span class="keyword">self</span>.delegate respondsToSelector:aSelector]) &#123;</span><br><span class="line">			<span class="comment">// 方法签名(方法的描述)</span></span><br><span class="line">			<span class="built_in">NSMethodSignature</span> *signature = [[<span class="keyword">self</span>.delegate <span class="keyword">class</span>] instanceMethodSignatureForSelector:aSelector];</span><br><span class="line">			<span class="keyword">if</span> (signature == <span class="literal">nil</span>) &#123;</span><br><span class="line">				<span class="built_in">NSLog</span>(<span class="string">@"方法签名不存在"</span>);</span><br><span class="line">				<span class="comment">//可以抛出异常也可以不操作。</span></span><br><span class="line">			&#125;</span><br><span class="line"><span class="meta"># pragma clang diagnostic push</span></span><br><span class="line"><span class="meta"># pragma clang diagnostic ignored <span class="meta-string">"-Warc-performSelector-leaks"</span></span></span><br><span class="line">			<span class="keyword">id</span> obj = [<span class="keyword">self</span>.delegate performSelector:aSelector withObject:params];</span><br><span class="line"><span class="meta"># pragma clang diagnostic pop</span></span><br><span class="line">			<span class="comment">///  有返回值类型，才去获得返回值 void v  objc @</span></span><br><span class="line">			<span class="keyword">if</span> (signature.methodReturnLength) &#123;</span><br><span class="line">				<span class="keyword">return</span> obj;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="方法废弃"><a href="#方法废弃" class="headerlink" title="方法废弃"></a>方法废弃</h1><p>问题是解决了，但是上面的web view 的<code>- (void)webView:(WebView *)webView windowScriptObjectAvailable:(WebScriptObject *)windowScriptObject</code>已经废弃了 官方推荐使用 <code>- (void)webView:(WebView *)webView didClearWindowObject:(WebScriptObject *)windowObject forFrame:(WebFrame *)frame</code>;<br>又但是 WebView 官方也不推荐使用了支持到10.14了，让大家使用 <code>WKWebView (WK_EXTERN API_AVAILABLE(macosx(10.10), ios(8.0)))</code>。另推荐使用 <code>JavaScriptCore</code></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/17/WebView-WebScriptObject/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
         
       
     </div>
@@ -1168,7 +1501,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/02/2018-11-02-cocoa-webview-upload-file /">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/02/2018-11-02-cocoa-webview-upload-file/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Murphy">
@@ -1187,7 +1520,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/02/2018-11-02-cocoa-webview-upload-file /" itemprop="url">
+                <a class="post-title-link" href="/2018/11/02/2018-11-02-cocoa-webview-upload-file/" itemprop="url">
                   Cocoa中WebView允许选择本地上传文件
                 </a>
               
@@ -1231,7 +1564,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-27 22:25:04" itemprop="dateModified" datetime="2018-11-27T22:25:04+08:00">2018-11-27</time>
+                <time title="Modified: 2018-12-21 00:39:45" itemprop="dateModified" datetime="2018-12-21T00:39:45+08:00">2018-12-21</time>
               
             
           </span>
@@ -1680,361 +2013,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-12-git-tag/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-09-12-git-tag/" itemprop="url">
-                  Git Tag
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h1><ul>
-<li>git tag 列出所有标签 </li>
-<li>git show tag_name 列出该标签的版本信息</li>
-<li>git tag tag_name 创建名字为tag_name的标签</li>
-<li>git push origin tag_name推送制定的标签</li>
-<li>git push origin - -tags 推送本地所有新增的标签</li>
-<li>git tag -d tag_name 删除本地名字为tag_name的标签</li>
-<li>git push origin :refs/tags/tag_name 删除云端名字为tag_name的标签</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/08/28/2018-09-30-finder-extension/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/2018-09-30-finder-extension/" itemprop="url">
-                  macOS Finder Extension
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 17:16:00" itemprop="dateCreated datePublished" datetime="2018-08-28T17:16:00+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-28 21:51:22" itemprop="dateModified" datetime="2018-11-28T21:51:22+08:00">2018-11-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。<br>在工程中新建target的 选 Finder Sync 就行了，默认会创建一些示例代码。<br>Finder Sync 和 主app 通信可以使用 URL Scheme 规则进行数据传递，共享数据的话设置一下 App Groups 。也可以主app启动个本地 <a href="https://github.com/robbiehanson/CocoaHTTPServer" target="_blank" rel="noopener">http server</a> 进行通信也可以。</p>
-<ul>
-<li><a href="https://github.com/BokkkRottt/FinderSyncDemo" target="_blank" rel="noopener">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
-<li><a href="https://www.jianshu.com/p/9124340f0f71" target="_blank" rel="noopener">https://www.jianshu.com/p/9124340f0f71</a></li>
-<li><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
-<li><a href="http://www.cocoachina.com/ios/20141004/9824.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
-<li><a href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/" target="_blank" rel="noopener">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2082,7 +2060,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2118,7 +2096,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

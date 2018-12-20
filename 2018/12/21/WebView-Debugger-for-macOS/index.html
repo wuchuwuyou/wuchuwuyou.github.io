@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="经常使用 SandBox ,但是总也记不住，记录下来免的又忘记了。 沙盒目录沙盒的目录中有很多文件，经常打交道的是Data文件，它包含下面三个文件  Documents：用于存储用户数据，iTunes备份和恢复的时候会包括此目录，所以，苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下。 Library：包含两个子目录：Caches 和 Preferences。Caches用来存放用户">
-<meta name="keywords" content="iOS,沙盒,SandBox">
+  <meta name="description" content="mac 上调试应用的 Webview 界面开启方式safari 开启 Preferences -&amp;gt; Advanced -&amp;gt;Show Develop menu in menu bar 运行方式Debug 模式下直接就能显示出来，选中就可以开始调试了。 但是在 Release 模式下，比如给前端开发的测试包，就没法使用了。在 Xcode 工程中的 LenovoBox.entitlement">
+<meta name="keywords" content="cocoa,WebView,crash,Safari">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS SandBox">
-<meta property="og:url" content="https://wuchuwuyou.github.io/2017/02/23/2017-02-23-ios-sandbox/index.html">
+<meta property="og:title" content="WebView Debugger for macOS">
+<meta property="og:url" content="https://wuchuwuyou.github.io/2018/12/21/WebView-Debugger-for-macOS/index.html">
 <meta property="og:site_name" content="JUST4FUN">
-<meta property="og:description" content="经常使用 SandBox ,但是总也记不住，记录下来免的又忘记了。 沙盒目录沙盒的目录中有很多文件，经常打交道的是Data文件，它包含下面三个文件  Documents：用于存储用户数据，iTunes备份和恢复的时候会包括此目录，所以，苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下。 Library：包含两个子目录：Caches 和 Preferences。Caches用来存放用户">
+<meta property="og:description" content="mac 上调试应用的 Webview 界面开启方式safari 开启 Preferences -&amp;gt; Advanced -&amp;gt;Show Develop menu in menu bar 运行方式Debug 模式下直接就能显示出来，选中就可以开始调试了。 但是在 Release 模式下，比如给前端开发的测试包，就没法使用了。在 Xcode 工程中的 LenovoBox.entitlement">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-27T14:19:33.753Z">
+<meta property="og:image" content="https://wuchuwuyou.github.io/2018/12/21/images/WebView-Debugger-for-macOS.png">
+<meta property="og:updated_time" content="2018-12-20T16:36:50.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS SandBox">
-<meta name="twitter:description" content="经常使用 SandBox ,但是总也记不住，记录下来免的又忘记了。 沙盒目录沙盒的目录中有很多文件，经常打交道的是Data文件，它包含下面三个文件  Documents：用于存储用户数据，iTunes备份和恢复的时候会包括此目录，所以，苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下。 Library：包含两个子目录：Caches 和 Preferences。Caches用来存放用户">
+<meta name="twitter:title" content="WebView Debugger for macOS">
+<meta name="twitter:description" content="mac 上调试应用的 Webview 界面开启方式safari 开启 Preferences -&amp;gt; Advanced -&amp;gt;Show Develop menu in menu bar 运行方式Debug 模式下直接就能显示出来，选中就可以开始调试了。 但是在 Release 模式下，比如给前端开发的测试包，就没法使用了。在 Xcode 工程中的 LenovoBox.entitlement">
+<meta name="twitter:image" content="https://wuchuwuyou.github.io/2018/12/21/images/WebView-Debugger-for-macOS.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://wuchuwuyou.github.io/2017/02/23/2017-02-23-ios-sandbox/">
+  <link rel="canonical" href="https://wuchuwuyou.github.io/2018/12/21/WebView-Debugger-for-macOS/">
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>iOS SandBox | JUST4FUN</title>
+  <title>WebView Debugger for macOS | JUST4FUN</title>
   
 
 
@@ -307,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2017/02/23/2017-02-23-ios-sandbox/">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/12/21/WebView-Debugger-for-macOS/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Murphy">
@@ -324,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS SandBox
+          <h1 class="post-title" itemprop="name headline">WebView Debugger for macOS
               
             
           </h1>
@@ -349,24 +351,12 @@
                 
               
 
-              <time title="Created: 2017-02-23 11:09:04" itemprop="dateCreated datePublished" datetime="2017-02-23T11:09:04+08:00">2017-02-23</time>
+              <time title="Created: 2018-12-21 00:16:00 / Modified: 00:36:50" itemprop="dateCreated datePublished" datetime="2018-12-21T00:16:00+08:00">2018-12-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
               
             
           </span>
@@ -417,27 +407,9 @@
       
 
       
-        <p>经常使用 SandBox ,但是总也记不住，记录下来免的又忘记了。</p>
-<h3 id="沙盒目录"><a href="#沙盒目录" class="headerlink" title="沙盒目录"></a>沙盒目录</h3><p>沙盒的目录中有很多文件，经常打交道的是Data文件，它包含下面三个文件</p>
-<ol>
-<li>Documents：用于存储用户数据，iTunes备份和恢复的时候会包括此目录，所以，苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下。</li>
-<li>Library：包含两个子目录：Caches 和 Preferences。Caches用来存放用户需要换成的文件。Preferences是APP的偏好设置，可以通过NSUserDefaults来读取和设置。</li>
-<li>tmp： 用于存放临时文件，这个可以放一些当APP退出后不再需要的文件。</li>
-</ol>
-<h3 id="获取沙盒路径"><a href="#获取沙盒路径" class="headerlink" title="获取沙盒路径"></a>获取沙盒路径</h3><h4 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h4><pre><code>//获取沙盒根目录
-NSString *directory = NSHomeDirectory();
-</code></pre><h4 id="Documents路径"><a href="#Documents路径" class="headerlink" title="Documents路径"></a>Documents路径</h4><pre><code>//获取Documents路径
-NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-NSString *path = [paths objectAtIndex:0];
-</code></pre><h4 id="Library路径"><a href="#Library路径" class="headerlink" title="Library路径"></a>Library路径</h4><pre><code>//获取Library路径
-NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-NSString *path = [paths objectAtIndex:0];
-</code></pre><h4 id="Caches路径"><a href="#Caches路径" class="headerlink" title="Caches路径"></a>Caches路径</h4><pre><code>//获取Caches路径
-NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-NSString *path = [paths objectAtIndex:0];
-</code></pre><h4 id="tmp路径"><a href="#tmp路径" class="headerlink" title="tmp路径"></a>tmp路径</h4><pre><code>//获取tmp路径 
-NSString *tmp = NSTemporaryDirectory();
-</code></pre><p>–EOF–</p>
+        <h1 id="mac-上调试应用的-Webview-界面"><a href="#mac-上调试应用的-Webview-界面" class="headerlink" title="mac 上调试应用的 Webview 界面"></a>mac 上调试应用的 Webview 界面</h1><h3 id="开启方式"><a href="#开启方式" class="headerlink" title="开启方式"></a>开启方式</h3><p>safari 开启 Preferences -&gt; Advanced -&gt;Show Develop menu in menu bar</p>
+<h3 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h3><p><img src="../images/WebView-Debugger-for-macOS.png" alt="Debugger"><br>Debug 模式下直接就能显示出来，选中就可以开始调试了。</p>
+<p>但是在 Release 模式下，比如给前端开发的测试包，就没法使用了。在 Xcode 工程中的 <code>LenovoBox.entitlements</code> 文件中添加下面两行<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.get-task-allow<span class="tag">&lt;/<span class="name">key</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -456,6 +428,18 @@ NSString *tmp = NSTemporaryDirectory();
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/macOS/" rel="tag"># macOS</a>
+          
+            <a href="/tags/cocoa/" rel="tag"># cocoa</a>
+          
+            <a href="/tags/WebView/" rel="tag"># WebView</a>
+          
+            <a href="/tags/Safari/" rel="tag"># Safari</a>
+          
+        </div>
+      
 
       
       
@@ -465,8 +449,8 @@ NSString *tmp = NSTemporaryDirectory();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/01/2016-08-01-shang-chuan-ipazhong-dot-bundlewen-jian-wen-ti/" rel="next" title="上传ipa包.Bundle文件问题">
-                <i class="fa fa-chevron-left"></i> 上传ipa包.Bundle文件问题
+              <a href="/2018/12/21/performSelector/" rel="next" title="performSelector">
+                <i class="fa fa-chevron-left"></i> performSelector
               </a>
             
           </div>
@@ -474,10 +458,6 @@ NSString *tmp = NSTemporaryDirectory();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/18/2018-07-18-urlsession-memory-leak/" rel="prev" title="一个内存泄露问题">
-                一个内存泄露问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +624,7 @@ NSString *tmp = NSTemporaryDirectory();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#沙盒目录"><span class="nav-number">1.</span> <span class="nav-text">沙盒目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取沙盒路径"><span class="nav-number">2.</span> <span class="nav-text">获取沙盒路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根目录"><span class="nav-number">2.1.</span> <span class="nav-text">根目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Documents路径"><span class="nav-number">2.2.</span> <span class="nav-text">Documents路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Library路径"><span class="nav-number">2.3.</span> <span class="nav-text">Library路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Caches路径"><span class="nav-number">2.4.</span> <span class="nav-text">Caches路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tmp路径"><span class="nav-number">2.5.</span> <span class="nav-text">tmp路径</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mac-上调试应用的-Webview-界面"><span class="nav-number">1.</span> <span class="nav-text">mac 上调试应用的 Webview 界面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启方式"><span class="nav-number">1.0.1.</span> <span class="nav-text">开启方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行方式"><span class="nav-number">1.0.2.</span> <span class="nav-text">运行方式</span></a></li></ol></li></ol></div>
             
 
           </div>
