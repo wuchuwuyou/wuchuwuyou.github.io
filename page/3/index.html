@@ -303,6 +303,387 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2017/02/23/2017-02-23-ios-sandbox/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/23/2017-02-23-ios-sandbox/" itemprop="url">
+                  iOS SandBox
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-02-23 11:09:04" itemprop="dateCreated datePublished" datetime="2017-02-23T11:09:04+08:00">2017-02-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>经常使用 SandBox ,但是总也记不住，记录下来免的又忘记了。</p>
+<h3 id="沙盒目录"><a href="#沙盒目录" class="headerlink" title="沙盒目录"></a>沙盒目录</h3><p>沙盒的目录中有很多文件，经常打交道的是Data文件，它包含下面三个文件</p>
+<ol>
+<li>Documents：用于存储用户数据，iTunes备份和恢复的时候会包括此目录，所以，苹果建议将程序中建立的或在程序中浏览到的文件数据保存在该目录下。</li>
+<li>Library：包含两个子目录：Caches 和 Preferences。Caches用来存放用户需要换成的文件。Preferences是APP的偏好设置，可以通过NSUserDefaults来读取和设置。</li>
+<li>tmp： 用于存放临时文件，这个可以放一些当APP退出后不再需要的文件。</li>
+</ol>
+<h3 id="获取沙盒路径"><a href="#获取沙盒路径" class="headerlink" title="获取沙盒路径"></a>获取沙盒路径</h3><h4 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h4><pre><code>//获取沙盒根目录
+NSString *directory = NSHomeDirectory();
+</code></pre><h4 id="Documents路径"><a href="#Documents路径" class="headerlink" title="Documents路径"></a>Documents路径</h4><pre><code>//获取Documents路径
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *path = [paths objectAtIndex:0];
+</code></pre><h4 id="Library路径"><a href="#Library路径" class="headerlink" title="Library路径"></a>Library路径</h4><pre><code>//获取Library路径
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+NSString *path = [paths objectAtIndex:0];
+</code></pre><h4 id="Caches路径"><a href="#Caches路径" class="headerlink" title="Caches路径"></a>Caches路径</h4><pre><code>//获取Caches路径
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+NSString *path = [paths objectAtIndex:0];
+</code></pre><h4 id="tmp路径"><a href="#tmp路径" class="headerlink" title="tmp路径"></a>tmp路径</h4><pre><code>//获取tmp路径 
+NSString *tmp = NSTemporaryDirectory();
+</code></pre><p>–EOF–</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2016/08/01/2016-08-01-shang-chuan-ipazhong-dot-bundlewen-jian-wen-ti/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/01/2016-08-01-shang-chuan-ipazhong-dot-bundlewen-jian-wen-ti/" itemprop="url">
+                  上传ipa包.Bundle文件问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-08-01 15:17:46" itemprop="dateCreated datePublished" datetime="2016-08-01T15:17:46+08:00">2016-08-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>前些日子集成了某人脸识别的 SDK，通过他们发来的文档成功接入了，发测试也是使用了蒲公英进行分发的，通过 Xcode 打包出 ipa 然后传到蒲公英，一切都是很正常。直到前两天我要提交审核了，上传 ipa 的时候报错了。</p>
+<p>报错信息:</p>
+<blockquote>
+<p>ERROR ITMS-90166: “Missing Code Signing Entitlements. No entitlements found in bundle ‘com.xx.xxxx’ for executable ‘Payload/xx.app/PlugIns/xxxx.bundle/xxxx’.””</p>
+</blockquote>
+<blockquote>
+<p>ERROR ITMS-90171: “Invalid Bundle Structure - The binary file ‘xx.app/PlugIns/xxxx.bundle/xxxx’ is not permitted. Your app can’t contain standalone executables or libraries, other than the CFBundleExecutable of supported bundles. Refer to the Bundle Programming Guide at <a href="https://developer.apple.com/go/?id=bundle-structure" target="_blank" rel="noopener">https://developer.apple.com/go/?id=bundle-structure</a> for information on the iOS app bundle structure.”</p>
+</blockquote>
+<p>基本上就是报这两个错误，由于文件都是别人提供的，我就去问了下技术支持，但是没人鸟我啊，所以只能自己解决了。</p>
+<p>刚看到报错信息我就想当然的就去网上搜了。费了很长时间都没有解决，焦头烂额，人也很烦躁。</p>
+<p>后来实在没招了，仔细看了下报错信息，再对比下源文件，bundle 包下有一个可执行文件，报错信息中也确实给指出了问题:</p>
+<blockquote>
+<p>Your app can’t contain standalone <code>executables</code> or libraries, other than the CFBundleExecutable of supported bundles.</p>
+</blockquote>
+<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><ol>
+<li>删除编译 bundle 的 info.plist 中 Executable file</li>
+<li>删除 bundle 所有的可执行文件。</li>
+</ol>
+<p>因为 bundle 是静态的，也就是说，我们包含到包中的资源文件作为一个资源包是不参加项目编译的。也就意味着，bundle包中不能包含可执行的文件。它仅仅是作为资源，被解析成为特定的2进制数据。</p>
+<p>还在研究项目中引用的工程是怎么自己把执行文件也打包到 bundle 中的，等研究明白了再做更新。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>还是自己太不稳当了，太毛躁，遇到问题就知道网上查，其实问题已经很明显了，稍微用下心就能很快的解决。一定要记得看仔细看报错信息，答案都在里面了。</p>
+<p>–EOF–</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2016/05/15/2016-05-15-static-cell-with-detaillabel-in-storyboard/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1409,7 +1790,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1453,7 +1834,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1502,7 +1891,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
