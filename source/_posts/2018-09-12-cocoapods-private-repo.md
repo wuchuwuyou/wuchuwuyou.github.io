@@ -29,13 +29,22 @@ published: true
 
 但是我们在验证``.podspec``和往自己的私有repo中提交的时候会报错。
 只需要如下操作 
+
 > DeviceUniqueKey.podspec 为我的创建的私有库，repo_name是版本库的名字
 
 需要在 pod lib lint 命令是加上 --sources repo地址。例如：
-``pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git``
+本地验证
+> pod spec lint xxx.podspec --sources=http://xxx@git.xxx.xx/xx/myRepo.git,https://github.com/CocoaPods/Specs.git
+
+验证远程版本库
+
+> pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git
 
 pod repo push 时也需要在命令上加上--sources 例如：
-``pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git``
+
+> pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git  --allow-warnings
+
+`--allow-warnings` 表示忽略警告。
 
 完事记得``pod repo update 版本库名称``一下
  
