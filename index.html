@@ -303,6 +303,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2019/01/14/NSTask-Output-Character/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Murphy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JUST4FUN">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/14/NSTask-Output-Character/" itemprop="url">
+                  NSTask Output Character
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-14 10:23:22" itemprop="dateCreated datePublished" datetime="2019-01-14T10:23:22+08:00">2019-01-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-29 22:36:27" itemprop="dateModified" datetime="2019-05-29T22:36:27+08:00">2019-05-29</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSTask</span> *task = [[<span class="built_in">NSTask</span> alloc] init];</span><br><span class="line"><span class="built_in">NSMutableDictionary</span> * e = [<span class="built_in">NSMutableDictionary</span> dictionaryWithDictionary:[[<span class="built_in">NSProcessInfo</span> processInfo] environment]];</span><br><span class="line">[e setObject:<span class="string">@"en_US.UTF-8"</span> forKey:<span class="string">@"LC_ALL"</span>];</span><br><span class="line">[e setObject:<span class="string">@"en_US.UTF-8"</span> forKey:<span class="string">@"LANG"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    [e setObject:@"zh_CN.UTF-8" forKey:@"LC_ALL"];</span></span><br><span class="line"><span class="comment">//    [e setObject:@"zh_CN.UTF-8" forKey:@"LANG"];</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">[task setEnvironment:e];</span><br></pre></td></tr></table></figure>
+<p>中文字符编码问题<br>\xe5\x90\x84\xe7\xa7</p>
+<p>添加上面的 environment 就可以了</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2019/01/05/NSAllowsArbitraryLoads/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1833,186 +1987,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wuchuwuyou.github.io/2018/11/02/2018-11-02-cocoa-webview-upload-file/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Murphy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JUST4FUN">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/02/2018-11-02-cocoa-webview-upload-file/" itemprop="url">
-                  Cocoa中WebView允许选择本地上传文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-02 11:30:44" itemprop="dateCreated datePublished" datetime="2018-11-02T11:30:44+08:00">2018-11-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-21 00:39:45" itemprop="dateModified" datetime="2018-12-21T00:39:45+08:00">2018-12-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"file"</span> name=<span class="string">"uploadfile"</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>在webview上不能正常的弹出选择器，cef正常。</p>
-<h3 id="WebUIDelegate"><a href="#WebUIDelegate" class="headerlink" title="WebUIDelegate"></a>WebUIDelegate</h3><p>解决该问题只需要实现 <code>WebUIDelegate</code> 的代理方法 </p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure>
-<h3 id="实现内容"><a href="#实现内容" class="headerlink" title="实现内容"></a>实现内容</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark -  webview</span></span><br><span class="line"><span class="comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="built_in">NSOpenPanel</span>* openDlg = [<span class="built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([openDlg runModal] == <span class="built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="built_in">NSMutableArray</span> *files = [[<span class="built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc</a></li>
-<li><a href="https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264" target="_blank" rel="noopener">https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264</a></li>
-<li><a href="https://stackoverflow.com/questions/7626463/how-to-allow-files-uploading-with-webview-in-cocoa" target="_blank" rel="noopener">https://stackoverflow.com/questions/7626463/how-to-allow-files-uploading-with-webview-in-cocoa</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2060,7 +2034,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2091,8 +2065,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     

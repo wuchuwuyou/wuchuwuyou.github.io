@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="JUST4FUN">
 <meta property="og:description" content="#CocoaPods私有库 私有库版本库 创建版本库（repo）私有库的一个索引 建一个git空仓库 执行Pod repo list列出本地的所有的版本库 执行pod repo add repo的名字 git地址将索引库添加到本地  创建私有库项目创建项目pod lib create &amp;lt;项目名称&amp;gt; Assets 资源文件 Class 源码文件。根据命令行提示一步步执行，然后就写代码招呼">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-27T14:19:33.762Z">
+<meta property="og:updated_time" content="2019-05-29T14:36:27.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods私有库">
 <meta name="twitter:description" content="#CocoaPods私有库 私有库版本库 创建版本库（repo）私有库的一个索引 建一个git空仓库 执行Pod repo list列出本地的所有的版本库 执行pod repo add repo的名字 git地址将索引库添加到本地  创建私有库项目创建项目pod lib create &amp;lt;项目名称&amp;gt; Assets 资源文件 Class 源码文件。根据命令行提示一步步执行，然后就写代码招呼">
@@ -365,7 +365,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-27 22:19:33" itemprop="dateModified" datetime="2018-11-27T22:19:33+08:00">2018-11-27</time>
+                <time title="Modified: 2019-05-29 22:36:27" itemprop="dateModified" datetime="2019-05-29T22:36:27+08:00">2019-05-29</time>
               
             
           </span>
@@ -432,9 +432,13 @@
 <blockquote>
 <p>DeviceUniqueKey.podspec 为我的创建的私有库，repo_name是版本库的名字</p>
 </blockquote>
-<p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br><code>pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
-<p>pod repo push 时也需要在命令上加上–sources 例如：<br><code>pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git</code></p>
-<p>完事记得<code>pod repo update 版本库名称</code>一下</p>
+<p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br>本地验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint xxx.podspec --sources=http://xxx@git.xxx.xx/xx/myRepo.git,https://github.com/CocoaPods/Specs.git</span><br></pre></td></tr></table></figure></p>
+<p>验证远程版本库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git</span><br></pre></td></tr></table></figure>
+<p>pod repo push 时也需要在命令上加上–sources 例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git  --allow-warnings</span><br></pre></td></tr></table></figure>
+<p><code>--allow-warnings</code> 表示忽略警告。</p>
+<p>完事记得<code>pod repo update repo_name</code>一下</p>
 
       
     </div>
@@ -462,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/15/2018-08-15-block-memory-management/" rel="next" title="block memory management">
-                <i class="fa fa-chevron-left"></i> block memory management
+              <a href="/2018/08/28/2018-08-28-lately-record/" rel="next" title="记录一下">
+                <i class="fa fa-chevron-left"></i> 记录一下
               </a>
             
           </div>
@@ -472,8 +476,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/2018-09-12-git-tag/" rel="prev" title="Git Tag">
-                Git Tag <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/2018-09-30-finder-extension/" rel="prev" title="macOS Finder Extension">
+                macOS Finder Extension <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -544,7 +548,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -575,8 +579,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
