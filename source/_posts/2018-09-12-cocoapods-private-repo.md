@@ -34,17 +34,22 @@ published: true
 
 需要在 pod lib lint 命令是加上 --sources repo地址。例如：
 本地验证
-> pod spec lint xxx.podspec --sources=http://xxx@git.xxx.xx/xx/myRepo.git,https://github.com/CocoaPods/Specs.git
+```
+pod spec lint xxx.podspec --sources=http://xxx@git.xxx.xx/xx/myRepo.git,https://github.com/CocoaPods/Specs.git
+```
 
 验证远程版本库
 
-> pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git
-
+```
+pod lib lint DeviceUniqueKey.podspec --sources=https://github.com/CocoaPods/Specs.git,xxx.xxx.xxx.xxx/iOS/repo_name.git
+```
 pod repo push 时也需要在命令上加上--sources 例如：
-
-> pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git  --allow-warnings
+ 
+```
+pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources=ssh://git@xxx.xxx.xxx.xxx/iOS/repo_name.git  --allow-warnings 
+```
 
 `--allow-warnings` 表示忽略警告。
 
-完事记得``pod repo update 版本库名称``一下
+完事记得``pod repo update repo_name``一下
  
