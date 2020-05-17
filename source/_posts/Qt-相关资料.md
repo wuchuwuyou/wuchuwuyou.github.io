@@ -8,7 +8,7 @@ categories: technology
 ---
 
 最近一段时间一直在mac上做客户端开发，自己整理了一些初学Qt的资料。
-
+<!--More-->
 Qt 安装
 
 - http://download.qt.io/
