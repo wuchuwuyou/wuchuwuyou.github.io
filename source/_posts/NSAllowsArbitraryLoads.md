@@ -23,8 +23,8 @@ The resource could not be loaded because the App Transport Security policy requi
 
 赶紧查文档，文档上就有说明
 
-![NSAllowsArbitraryLoads](../images/ATS/NSAllowsArbitraryLoads.png)
-![NSAllowsArbitraryLoadsInWebContent](../images/ATS/NSAllowsArbitraryLoadsInWebContent.png)
+![NSAllowsArbitraryLoads](/images/ATS/NSAllowsArbitraryLoads.png)
+![NSAllowsArbitraryLoadsInWebContent](/images/ATS/NSAllowsArbitraryLoadsInWebContent.png)
 
 文档说的很清楚了，在 iOS 10 和 macOS 10.12 以后，只要写了 `NSAllowsArbitraryLoadsForMedia` `NSAllowsArbitraryLoadsInWebContent` `NSAllowsLocalNetworking` 这个三个中任何一个 `NSAllowsArbitraryLoads` 默认就为 NO 了，不管你设置的啥。但是还是一脸懵逼...
 
