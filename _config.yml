@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wuchuwuyou.github.io
+url: http://blog.msmk.live
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -77,6 +77,8 @@ pagination_dir: page
 theme: icarus
 # theme: next
 
+Plugins:
+- hexo-generator-cname
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
