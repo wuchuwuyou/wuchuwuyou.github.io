@@ -1,5 +1,5 @@
 ---
-title: Qt Ubuntu 运行报错 /usr/bin/ld: cannot find -lGL
+title: Qt Ubuntu 运行报错 
 date: 2020-06-29 11:40:45
 tags: Qt,ubuntu
 ---
