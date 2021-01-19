@@ -1,7 +1,9 @@
 ---
 title: Qt报错 a missing vtable usually means the first non-inline virtual member function has no definition
 date: 2020-06-16 23:56:06
+categories: technology
 tags:
+- Qt
 ---
 
 

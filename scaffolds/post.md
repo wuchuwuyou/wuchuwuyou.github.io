@@ -1,5 +1,9 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+published: true
+tags: 
+categories: 
+- technology
+keywords:
 ---

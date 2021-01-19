@@ -1,7 +1,9 @@
 ---
 title: Qt QLineEdit 输入框不可编辑
 date: 2020-06-17 00:10:18
+categories: technology
 tags:
+- Qt
 ---
 
 ```

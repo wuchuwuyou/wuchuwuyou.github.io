@@ -1,7 +1,9 @@
 ---
 title: Qt系统托盘
 date: 2020-06-17 00:09:11
+categories: technology
 tags:
+- Qt
 ---
 
 QSystemTrayIcon

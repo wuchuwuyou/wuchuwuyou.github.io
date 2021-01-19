@@ -1,7 +1,9 @@
 ---
 title: Qt 单一应用
 date: 2020-06-17 00:17:36
+categories: technology
 tags:
+- Qt
 ---
 
 

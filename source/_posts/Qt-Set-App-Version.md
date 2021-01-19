@@ -1,7 +1,9 @@
 ---
 title: Qt 设置版本号
 date: 2020-06-16 23:53:30
+categories: technology
 tags:
+- Qt
 ---
 
 Qt 设置版本号 

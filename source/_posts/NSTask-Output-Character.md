@@ -2,6 +2,7 @@
 title: NSTask Output Character
 date: 2019-01-14 10:23:22
 tags:
+categories: technology
 ---
 ```objc
 NSTask *task = [[NSTask alloc] init];

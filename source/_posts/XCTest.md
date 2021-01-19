@@ -1,7 +1,11 @@
 ---
 title: XCTest
 date: 2021-01-19 17:37:39
+categories: technology
 tags:
+- iOS
+- macOS
+keywords: XCTestExpectation,XCTest
 ---
 
 ## 异步

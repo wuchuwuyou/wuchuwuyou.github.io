@@ -1,7 +1,10 @@
 ---
 title: Qt 显示语言切换
 date: 2021-01-19 17:04:22
-tags: Qt,translator,国际化,internationalization,i18n
+tags: 
+- Qt
+categories: technology
+keywords:  Qt,translator,国际化,internationalization,i18n
 ---
 
 核心操作就是通过 ```QTranslator```  加载对应的国际化文件

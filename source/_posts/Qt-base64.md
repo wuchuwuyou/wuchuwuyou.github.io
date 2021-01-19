@@ -1,7 +1,9 @@
 ---
 title: Qt base64
 date: 2020-06-16 23:59:58
+categories: technology
 tags:
+- Qt
 ---
 
 ```

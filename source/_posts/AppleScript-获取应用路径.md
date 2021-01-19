@@ -1,7 +1,8 @@
 ---
 title: AppleScript 获取应用路径
 date: 2021-01-19 17:02:31
-tags:
+categories: technology
+keywords:  AppleScript
 ---
 
 ```

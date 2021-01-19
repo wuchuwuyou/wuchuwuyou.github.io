@@ -1,7 +1,11 @@
 ---
 title: Qt include dylib on macOS
 date: 2020-06-17 00:08:14
+categories: technology
 tags:
+- Qt
+- macOS
+keywords: Qt,macOS,dylib
 ---
 
 项目中都是通过 动态库 的方式来组合模块的,debug模式下没有啥问题，因为IDE给处理了很多东西,但是在release模式下，打包出来的应用就有问题了。其中涉及到可执行程序引用dylib ,dylib 之间的相互引用

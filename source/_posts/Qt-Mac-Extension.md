@@ -1,7 +1,10 @@
 ---
 title: Qt 项目集成 Mac Extension
 date: 2020-06-17 00:05:10
+categories: technology
 tags:
+- Qt
+- macOS
 ---
 
 

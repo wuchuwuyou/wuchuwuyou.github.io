@@ -1,7 +1,10 @@
 ---
 title: Codesing & Notarize app on macOS
 date: 2021-01-19 16:35:00
-tags: macOS,codesign, notarization,公证,签名
+tags: 
+- macOS
+categories: technology
+keywords:  macOS,codesign, notarization,公证,签名
 ---
 
 ## Codesign

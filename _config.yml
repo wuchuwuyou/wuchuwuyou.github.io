@@ -73,9 +73,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: landscape
+# theme: landscape
 theme: icarus
 # theme: next
+# theme: cactus
 
 Plugins:
 - hexo-generator-cname

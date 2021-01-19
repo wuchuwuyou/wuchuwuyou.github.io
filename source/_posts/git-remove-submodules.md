@@ -1,7 +1,10 @@
 ---
 title: git remove submodules
 date: 2021-01-19 17:30:33
-tags: git,submodule
+tags: 
+- git
+categories: technology
+keywords:  git,submodule
 ---
 path/name 就是本地引入的 submodule 的路径，可以使用```git submodule```  来查看本地路径
 

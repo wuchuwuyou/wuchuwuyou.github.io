@@ -1,7 +1,9 @@
 ---
 title: qt 拖拽
 date: 2020-06-17 00:18:22
+categories: technology
 tags:
+- Qt
 ---
 
 - https://www.jianshu.com/p/81107b962387

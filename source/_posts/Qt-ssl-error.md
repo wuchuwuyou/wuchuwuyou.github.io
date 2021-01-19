@@ -1,7 +1,9 @@
 ---
 title: Qt ssl error
 date: 2020-06-29 16:35:45
-tags: Qt 
+categories: technology
+tags: 
+- Qt 
 ---
 
 

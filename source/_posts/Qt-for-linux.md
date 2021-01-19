@@ -1,7 +1,9 @@
 ---
 title: Qt for linux
 date: 2021-01-19 17:26:26
+categories: technology
 tags:
+- Qt
 ---
 
 ## 打包

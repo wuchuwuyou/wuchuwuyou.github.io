@@ -1,7 +1,10 @@
 ---
 title: Qt-macOS
 date: 2020-06-16 23:59:18
+categories: technology
 tags:
+- macOS
+- Qt
 ---
 
 
