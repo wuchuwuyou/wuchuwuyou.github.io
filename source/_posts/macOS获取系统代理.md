@@ -32,3 +32,6 @@ if (proxies) {
 }
 
 ```
+
+#### 参考
+- [System Configuration](https://developer.apple.com/documentation/systemconfiguration/scschemadefinitions/proxies_entity_keys)
