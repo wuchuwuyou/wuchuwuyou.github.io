@@ -8,8 +8,7 @@ tags: macOS
 keywords: Main Menu
 ---
 
-![Main Menu](/macOS-在Main-Menu显示已经打开的Window/MainMenu.png)
-
+{% asset_img MainMenu.png Main Menu %}
 这个设置是默认的设置
 
 1. NSWindow 属性 ```excludedFromWindowsMenu``` 设置为NO,默认就是NO
