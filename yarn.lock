@@ -1493,10 +1493,10 @@
     "resolve" "^1.11.0"
     "tildify" "^2.0.0"
 
-"hexo-component-inferno@^0.10.5":
-  "integrity" "sha512-zJm6tfb+snTvEG5oTzru5v7r7DNFXy50Uf657EjqjODdRBvdmeZlfP9XBDRlimPxWJh/E/QdGpHfk6uNWu1iGw=="
-  "resolved" "https://registry.npmjs.org/hexo-component-inferno/-/hexo-component-inferno-0.10.5.tgz"
-  "version" "0.10.5"
+"hexo-component-inferno@^0.12.0":
+  "integrity" "sha512-hP0gSuUW15n7RFR7k2ueSdi/CNT8nngVECmSQmPe1tMQy+k4BqodVPZyZiyA2qUAGuMjAPySEsnrqmTXDFKR+Q=="
+  "resolved" "https://registry.npmjs.org/hexo-component-inferno/-/hexo-component-inferno-0.12.0.tgz"
+  "version" "0.12.0"
   dependencies:
     "ajv" "^6.10.2"
     "inferno" "^7.3.3"
