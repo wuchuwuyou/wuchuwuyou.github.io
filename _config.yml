@@ -7,8 +7,8 @@ title: JUST4FUN
 subtitle:
 description:
 keywords:
-author: Murphy
-language: en #zh-CN
+author: Gnet
+language: zh-CN
 timezone:
 
 # URL
@@ -74,8 +74,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: landscape
-theme: icarus
-# theme: next
+# theme: icarus
+theme: next
 # theme: cactus
 
 Plugins:
