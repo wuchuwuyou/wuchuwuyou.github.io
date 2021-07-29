@@ -217,8 +217,8 @@
         <h1 id="GO-测试"><a href="#GO-测试" class="headerlink" title="GO 测试"></a>GO 测试</h1><p>Go 程序测试分三类，功能测试(test)、基准测试(benchmark,也称性能测试)、以及事例测试(example)</p>
 <p>测试文件命名规范为要测试的文件加上<code>_test</code>后缀，即如果被测试文件为<code>abc.go</code>则测试文件名为<code>abc_test.go</code></p>
 <p>每个测试文件必须至少包含一个测试函数</p>
-<p>功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个<code>*testing.T</code>类型的参数声明，例如  <code>func TestHello(t *testing.T) {}</code></p>
-<p>性能测试函数，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是 <code>*testing.B</code> 类型的，例如 <code>func BenchmarkHello(b *testing.B) {}</code></p>
+<p>功能测试函数，其名称必须以Test为前缀，并且参数列表只应有一个<code>*testing.T</code>类型的参数声明，例如  <code>func TestHello(t *testing.T) &#123;&#125;</code></p>
+<p>性能测试函数，其名称必须以Benchmark为前缀，并且唯一参数的类型必须是 <code>*testing.B</code> 类型的，例如 <code>func BenchmarkHello(b *testing.B) &#123;&#125;</code></p>
 <p>示例测试函数，其名称必须以Example为前缀，但对函数的参数列表没有强制规定。</p>
 
     </div>

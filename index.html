@@ -605,12 +605,11 @@
 
       
           <h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>处理异步事件 XCTestExpectation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];</span><br><span class="line"></span><br><span class="line">NetWrok *req &#x3D; [NetWrok new] ;</span><br><span class="line">[req startWithCompletionBlockWithSuccess:^(LDBaseRequest *request) &#123;</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125; failure:^(LDBaseRequest *request) &#123;</span><br><span class="line">    XCTAssertNil(request.error);</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[self waitForExpectationsWithTimeout:50 handler:^(NSError * _Nullable error) &#123;</span><br><span class="line">    XCTAssertNil(error);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];</span><br><span class="line"></span><br><span class="line">NetWrok *req &#x3D; [NetWrok new] ;</span><br><span class="line">[req startWithCompletionBlockWithSuccess:^(LDBaseRequest *request) &#123;</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125; failure:^(LDBaseRequest *request) &#123;</span><br><span class="line">    XCTAssertNil(request.error);</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[self waitForExpectationsWithTimeout:50 handler:^(NSError * _Nullable error) &#123;</span><br><span class="line">    XCTAssertNil(error);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://nshipster.com/xctestcase/" target="_blank" rel="noopener">https://nshipster.com/xctestcase/</a></li>
-<li><a href="https://www.jianshu.com/p/d405a9ca53fe" target="_blank" rel="noopener">https://www.jianshu.com/p/d405a9ca53fe</a></li>
-<li><a href="http://blog.kumaya.co/2014/07/10/xctest-assertions/" target="_blank" rel="noopener">http://blog.kumaya.co/2014/07/10/xctest-assertions/</a></li>
+<li><a target="_blank" rel="noopener" href="https://nshipster.com/xctestcase/">https://nshipster.com/xctestcase/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d405a9ca53fe">https://www.jianshu.com/p/d405a9ca53fe</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.kumaya.co/2014/07/10/xctest-assertions/">http://blog.kumaya.co/2014/07/10/xctest-assertions/</a></li>
 </ul>
 
       
@@ -839,9 +838,9 @@
 
       
           <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><ul>
-<li><a href="https://doc.qt.io/qt-5/linux-deployment.html" target="_blank" rel="noopener">https://doc.qt.io/qt-5/linux-deployment.html</a></li>
-<li><a href="https://forum.qt.io/topic/88727/gnu-linux-set-path-to-shared-libraries" target="_blank" rel="noopener">https://forum.qt.io/topic/88727/gnu-linux-set-path-to-shared-libraries</a></li>
-<li><a href="https://stackoverflow.com/questions/41674425/how-to-deploy-qt-applications-for-linux" target="_blank" rel="noopener">https://stackoverflow.com/questions/41674425/how-to-deploy-qt-applications-for-linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/linux-deployment.html">https://doc.qt.io/qt-5/linux-deployment.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/88727/gnu-linux-set-path-to-shared-libraries">https://forum.qt.io/topic/88727/gnu-linux-set-path-to-shared-libraries</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41674425/how-to-deploy-qt-applications-for-linux">https://stackoverflow.com/questions/41674425/how-to-deploy-qt-applications-for-linux</a></li>
 </ul>
 
       
@@ -918,7 +917,6 @@
       
           <p>在 Widget 中 加上 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this-&gt;setWindowFlags(windowFlags()&amp;~Qt::WindowContextHelpButtonHint);</span><br></pre></td></tr></table></figure>
-
       
     </div>
 

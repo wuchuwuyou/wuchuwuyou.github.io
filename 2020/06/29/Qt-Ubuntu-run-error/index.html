@@ -218,7 +218,6 @@
 <p>讲过查找是缺少 <code>libGL.so</code> 库</p>
 <p>先本地查找一下 <code>sudo find / | grep &quot;libGL.so&quot;</code> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;mesa&#x2F;libGL.so.1.2.0</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;mesa&#x2F;libGL.so.1</span><br></pre></td></tr></table></figure>
-
 <p>找到后 弄个链接到 <code>usr/lib</code> 下</p>
 <p><code>sudo ln -s /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0 /usr/lib/libGL.so</code></p>
 <p>如果本地没有查到 <code>libGL.so</code> 可以先下载</p>

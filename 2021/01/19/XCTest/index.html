@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"blog.msmk.live","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="异步处理异步事件 XCTestExpectation 12345678910111213XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];NetWrok *req &#x3D; [NetWrok new] ;[req startWithCompletionBlock">
+  <meta name="description" content="异步处理异步事件 XCTestExpectation 1234567891011121314XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];NetWrok *req &#x3D; [NetWrok new] ;[req startWithCompletionBlo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XCTest">
 <meta property="og:url" content="http://blog.msmk.live/2021/01/19/XCTest/index.html">
 <meta property="og:site_name" content="JUST4FUN">
-<meta property="og:description" content="异步处理异步事件 XCTestExpectation 12345678910111213XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];NetWrok *req &#x3D; [NetWrok new] ;[req startWithCompletionBlock">
+<meta property="og:description" content="异步处理异步事件 XCTestExpectation 1234567891011121314XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];NetWrok *req &#x3D; [NetWrok new] ;[req startWithCompletionBlo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T09:37:39.000Z">
 <meta property="article:modified_time" content="2021-01-19T16:00:49.047Z">
@@ -216,12 +216,11 @@
 
       
         <h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>处理异步事件 XCTestExpectation</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];</span><br><span class="line"></span><br><span class="line">NetWrok *req &#x3D; [NetWrok new] ;</span><br><span class="line">[req startWithCompletionBlockWithSuccess:^(LDBaseRequest *request) &#123;</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125; failure:^(LDBaseRequest *request) &#123;</span><br><span class="line">    XCTAssertNil(request.error);</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[self waitForExpectationsWithTimeout:50 handler:^(NSError * _Nullable error) &#123;</span><br><span class="line">    XCTAssertNil(error);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">XCTestExpectation* exception &#x3D; [self expectationWithDescription:@&quot;metadata&quot;];</span><br><span class="line"></span><br><span class="line">NetWrok *req &#x3D; [NetWrok new] ;</span><br><span class="line">[req startWithCompletionBlockWithSuccess:^(LDBaseRequest *request) &#123;</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125; failure:^(LDBaseRequest *request) &#123;</span><br><span class="line">    XCTAssertNil(request.error);</span><br><span class="line">    [exception fulfill];</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">[self waitForExpectationsWithTimeout:50 handler:^(NSError * _Nullable error) &#123;</span><br><span class="line">    XCTAssertNil(error);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://nshipster.com/xctestcase/" target="_blank" rel="noopener">https://nshipster.com/xctestcase/</a></li>
-<li><a href="https://www.jianshu.com/p/d405a9ca53fe" target="_blank" rel="noopener">https://www.jianshu.com/p/d405a9ca53fe</a></li>
-<li><a href="http://blog.kumaya.co/2014/07/10/xctest-assertions/" target="_blank" rel="noopener">http://blog.kumaya.co/2014/07/10/xctest-assertions/</a></li>
+<li><a target="_blank" rel="noopener" href="https://nshipster.com/xctestcase/">https://nshipster.com/xctestcase/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d405a9ca53fe">https://www.jianshu.com/p/d405a9ca53fe</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.kumaya.co/2014/07/10/xctest-assertions/">http://blog.kumaya.co/2014/07/10/xctest-assertions/</a></li>
 </ul>
 
     </div>

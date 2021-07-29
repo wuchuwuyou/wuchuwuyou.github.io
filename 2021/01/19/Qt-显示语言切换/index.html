@@ -220,20 +220,20 @@
         static bool removeTranslator(QTranslator * messageFile);
 #endif</code></pre><p>系统有个系统事件</p>
 <pre><code>void MyWidget::changeEvent(QEvent *event)
-{
-    if (event-&gt;type() == QEvent::LanguageChange) {
+&#123;
+    if (event-&gt;type() == QEvent::LanguageChange) &#123;
         titleLabel-&gt;setText(tr(&quot;Document Title&quot;));
     ...
-    } else
+    &#125; else
         QWidget::changeEvent(event);
-}</code></pre><p>可以处理显示语言变化的消息</p>
+&#125;</code></pre><p>可以处理显示语言变化的消息</p>
 <p>Qt提供的翻译在 Qt安装目录下  <code>/translations</code>  文件夹内 ,直接加到工程资源中就行</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://wiki.qt.io/How_to_create_a_multi_language_application" target="_blank" rel="noopener">https://wiki.qt.io/How_to_create_a_multi_language_application</a></li>
-<li><a href="https://doc.qt.io/qt-5/internationalization.html" target="_blank" rel="noopener">https://doc.qt.io/qt-5/internationalization.html</a></li>
-<li><a href="https://doc.qt.io/qt-5/qtranslator.html" target="_blank" rel="noopener">https://doc.qt.io/qt-5/qtranslator.html</a></li>
-<li><a href="https://doc.qt.io/qt-5/qlocale.html" target="_blank" rel="noopener">https://doc.qt.io/qt-5/qlocale.html</a></li>
-<li><a href="https://stackoverflow.com/questions/36345709/qlocalelanguage-traditional-and-simplified-chinese" target="_blank" rel="noopener">https://stackoverflow.com/questions/36345709/qlocalelanguage-traditional-and-simplified-chinese</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.qt.io/How_to_create_a_multi_language_application">https://wiki.qt.io/How_to_create_a_multi_language_application</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/internationalization.html">https://doc.qt.io/qt-5/internationalization.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qtranslator.html">https://doc.qt.io/qt-5/qtranslator.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qlocale.html">https://doc.qt.io/qt-5/qlocale.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36345709/qlocalelanguage-traditional-and-simplified-chinese">https://stackoverflow.com/questions/36345709/qlocalelanguage-traditional-and-simplified-chinese</a></li>
 </ul>
 
     </div>

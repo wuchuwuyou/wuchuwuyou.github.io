@@ -231,12 +231,10 @@
 </blockquote>
 <p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br>本地验证</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint xxx.podspec --sources&#x3D;http:&#x2F;&#x2F;xxx@git.xxx.xx&#x2F;xx&#x2F;myRepo.git,https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git</span><br></pre></td></tr></table></figure>
-
 <p>验证远程版本库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint DeviceUniqueKey.podspec --sources&#x3D;https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git,xxx.xxx.xxx.xxx&#x2F;iOS&#x2F;repo_name.git</span><br></pre></td></tr></table></figure>
 <p>pod repo push 时也需要在命令上加上–sources 例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources&#x3D;ssh:&#x2F;&#x2F;git@xxx.xxx.xxx.xxx&#x2F;iOS&#x2F;repo_name.git  --allow-warnings</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources&#x3D;ssh:&#x2F;&#x2F;git@xxx.xxx.xxx.xxx&#x2F;iOS&#x2F;repo_name.git  --allow-warnings </span><br></pre></td></tr></table></figure>
 <p><code>--allow-warnings</code> 表示忽略警告。</p>
 <p>完事记得<code>pod repo update repo_name</code>一下</p>
 
