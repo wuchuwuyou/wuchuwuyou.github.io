@@ -1,119 +1,545 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Category: technology - JUST4FUN</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="JUST4FUN"><meta name="msapplication-TileImage" content="/img/method-draw-image.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="JUST4FUN"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Just4fun"><meta property="og:url" content="http://blog.msmk.live/"><meta property="og:site_name" content="just4fun"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://blog.msmk.live/img/og_image.png"><meta property="article:author" content="Murphy"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.msmk.live"},"headline":"just4fun","image":[],"author":{"@type":"Person","name":"Murphy"},"publisher":{"@type":"Organization","name":"JUST4FUN","logo":{"@type":"ImageObject","url":"http://blog.msmk.live/img/method-draw-image.svg"}},"description":"just4fun"}</script><link rel="icon" href="/img/method-draw-image.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/method-draw-image.svg" alt="JUST4FUN" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/categories">Categories</a></li><li class="is-active"><a href="#" aria-current="page">technology</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-11-22T10:30:45.000Z" title="2018/11/22 下午6:30:45">2018-11-22</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.929Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">5 minutes read (About 788 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/11/22/2018-11-22-Listening-keyboard-and-mouse-events-for-macos/">监听键盘鼠标事件</a></h1><div class="content"><h1 id="监听键盘鼠标事件"><a href="#监听键盘鼠标事件" class="headerlink" title="监听键盘鼠标事件"></a>监听键盘鼠标事件</h1><p>今儿要做一个监听全局的键鼠事件的操作，之前使用的都是指监听应用内某一个控件的事件<br>只需要空间是继承 <code>NSResponder</code> 的就可以了，按需实现下面的方法就行了<br><img src="/images/NSResponder.png" alt="NSResponder"></p></div><a class="article-more button is-small is-size-7" href="/2018/11/22/2018-11-22-Listening-keyboard-and-mouse-events-for-macos/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-11-02T03:30:44.000Z" title="2018/11/2 上午11:30:44">2018-11-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.926Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 211 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/11/02/2018-11-02-cocoa-webview-upload-file/">Cocoa中WebView允许选择本地上传文件</a></h1><div class="content"><h3 id="Cocoa中WebView允许选择本地上传文件"><a href="#Cocoa中WebView允许选择本地上传文件" class="headerlink" title="Cocoa中WebView允许选择本地上传文件"></a>Cocoa中WebView允许选择本地上传文件</h3><p>Cocoa中使用 webview 加载URL显示网页，在进行选择文件上传时候</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"file"</span> name=<span class="string">"uploadfile"</span>&gt;</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<p>在webview上不能正常的弹出选择器，cef正常。</p>
-<h3 id="WebUIDelegate"><a href="#WebUIDelegate" class="headerlink" title="WebUIDelegate"></a>WebUIDelegate</h3><p>解决该问题只需要实现 <code>WebUIDelegate</code> 的代理方法 </p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现内容"><a href="#实现内容" class="headerlink" title="实现内容"></a>实现内容</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragma mark -  webview</span></span><br><span class="line"><span class="comment">/// &lt;input type="file"&gt;</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(<span class="keyword">id</span>&lt;WebOpenPanelResultListener&gt;)resultListener &#123;</span><br><span class="line">    <span class="comment">// Create the File Open Dialog class.</span></span><br><span class="line">    <span class="built_in">NSOpenPanel</span>* openDlg = [<span class="built_in">NSOpenPanel</span> openPanel];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Enable the selection of files in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseFiles:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Enable the selection of directories in the dialog.</span></span><br><span class="line">    [openDlg setCanChooseDirectories:<span class="literal">NO</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([openDlg runModal] == <span class="built_in">NSOKButton</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSArray</span>* URLs = [openDlg URLs];</span><br><span class="line">        <span class="built_in">NSMutableArray</span> *files = [[<span class="built_in">NSMutableArray</span> alloc]init];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;[URLs count]; i++) &#123;</span><br><span class="line">            <span class="built_in">NSString</span> *filename = [[URLs objectAtIndex:i]relativePath];</span><br><span class="line">            [files addObject:filename];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [files count]; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSString</span>* fileName = [files objectAtIndex:i];</span><br><span class="line">            [resultListener chooseFilename:fileName];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc">https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264">https://stackoverflow.com/questions/33642521/simple-swift-cocoa-app-with-webkit-upload-picture-doesnt-work/33694264#33694264</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7626463/how-to-allow-files-uploading-with-webview-in-cocoa">https://stackoverflow.com/questions/7626463/how-to-allow-files-uploading-with-webview-in-cocoa</a></li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-11-01T09:19:44.000Z" title="2018/11/1 下午5:19:44">2018-11-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.925Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 157 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/11/01/2018-11-01-github-permission-denied/">github Permission denied (publickey)</a></h1><div class="content"><p>今天重新生成了github的ssh key,添加完以后发现提示 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
-<p>然后查了一下资料，因为我在创建的时候给文件输入了个名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;Users&#x2F;murphy&#x2F;.ssh&#x2F;id_rsa): github</span><br></pre></td></tr></table></figure>
-<p>可以通过<code>ssh-add ~/.ssh/your_file_name</code>的方式解决。<br>也可以在 ~/.ssh/ 目录下编辑config配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi config</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line"> HostName github.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;github_rsa</span><br></pre></td></tr></table></figure>
-<p>User 就是用户名</p>
-<p>最后验证一下 <code>ssh -T git@github.com</code></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-10-31T09:19:44.000Z" title="2018/10/31 下午5:19:44">2018-10-31</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.925Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a few seconds read (About 6 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/10/31/2018-10-31-create-file/">macOS创建随机文件</a></h1><div class="content"><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1004339">https://cloud.tencent.com/developer/article/1004339</a></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-28T09:16:00.000Z" title="2018/8/28 下午5:16:00">2018-08-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.909Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 138 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/28/2018-08-28-lately-record/">记录一下</a></h1><div class="content"><h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://www.tanhao.me/pieces/1580.html/">自定义NSSearchField</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19978620/how-to-change-nspopover-background-color-include-triangle-part">背景色NSPopover</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.macdev.io/ebook/cocoaDraw.html">cocoa绘图</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.objccn.io/issue-14-5/">UIKit =&gt; AppKit</a></li>
-<li><a target="_blank" rel="noopener" href="http://adad184.com/2015/08/18/practice-in-i18n-dialling-code/">国际手机号前缀码</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9463871/change-selection-color-on-view-based-nstableview">NSTableView选中行背景色</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.apple.com/library/archive/samplecode/TableViewPlayground/Introduction/Intro.html">Using View-Based NSTableView Apple Sample Code</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.hcs.harvard.edu/~jrus/site/system-bindings.html">Default Mac OS X System Key Bindings</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zlucy.com/archives/12/">iOS Icon LaunchImage Size</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.seedlab.io/cocoa-key-event/">键盘事件相关</a></li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-28T09:16:00.000Z" title="2018/8/28 下午5:16:00">2018-08-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.914Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">3 minutes read (About 522 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/28/2018-09-12-cocoapods-private-repo/">CocoaPods私有库</a></h1><div class="content"><p>#CocoaPods私有库</p>
-<h3 id="私有库版本库"><a href="#私有库版本库" class="headerlink" title="私有库版本库"></a>私有库版本库</h3><ul>
-<li>创建版本库（repo）私有库的一个索引 建一个git空仓库</li>
-<li>执行<code>Pod repo list</code>列出本地的所有的版本库</li>
-<li>执行<code>pod repo add repo的名字 git地址</code>将索引库添加到本地</li>
-</ul>
-<h3 id="创建私有库项目"><a href="#创建私有库项目" class="headerlink" title="创建私有库项目"></a>创建私有库项目</h3><p>创建项目<code>pod lib create &lt;项目名称&gt;</code> Assets 资源文件 Class 源码文件。<br>根据命令行提示一步步执行，然后就写代码招呼吧。<br>提交代码的时候记得添加<a href="./2018-09-12-git-tag.md">tag</a>一起提交 与 <code>.podspec</code>里面的version一致<br><code>pod lib lint</code>  检查配置文件，通过以后可以提交<br><code>pod repo push  版本库名称 组件库名字.podspec</code></p>
-<blockquote>
-<p>pod lib lint 和 pod spec lint 命令分别是对podspec的本地校验和远程校验</p>
-</blockquote>
-<h3 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h3><p>自己写的cocoapods库中引用其他第三方库只需要在<code>.podspec</code>文件中设置 <code>s.dependency &#39;AFNetworking&#39;, &#39;~&gt; 2.3&#39;</code>这样的就可以了。但是如果你依赖的是自己的私有库，就会有点问题，需要麻烦一点弄一下。</p>
-<h3 id="依赖私有库"><a href="#依赖私有库" class="headerlink" title="依赖私有库"></a>依赖私有库</h3><p>私有库配置依赖中引用其他私有库，在<code>.podspec</code> 中的写法和上面一样 <code>s.dependency &#39;LDKeychain&#39;, &#39;~&gt; 0.1.0&#39; |LDKeychain就是我自己的之前写的私有库</code>，通过 dependency 引用私有库文件。</p>
-<p>但是我们在验证<code>.podspec</code>和往自己的私有repo中提交的时候会报错。<br>只需要如下操作 </p>
-<blockquote>
-<p>DeviceUniqueKey.podspec 为我的创建的私有库，repo_name是版本库的名字</p>
-</blockquote>
-<p>需要在 pod lib lint 命令是加上 –sources repo地址。例如：<br>本地验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint xxx.podspec --sources&#x3D;http:&#x2F;&#x2F;xxx@git.xxx.xx&#x2F;xx&#x2F;myRepo.git,https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git</span><br></pre></td></tr></table></figure>
-
-<p>验证远程版本库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint DeviceUniqueKey.podspec --sources&#x3D;https:&#x2F;&#x2F;github.com&#x2F;CocoaPods&#x2F;Specs.git,xxx.xxx.xxx.xxx&#x2F;iOS&#x2F;repo_name.git</span><br></pre></td></tr></table></figure>
-<p>pod repo push 时也需要在命令上加上–sources 例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo push lenovo-specs-repo DeviceUniqueKey.podspec —sources&#x3D;ssh:&#x2F;&#x2F;git@xxx.xxx.xxx.xxx&#x2F;iOS&#x2F;repo_name.git  --allow-warnings</span><br></pre></td></tr></table></figure>
-
-<p><code>--allow-warnings</code> 表示忽略警告。</p>
-<p>完事记得<code>pod repo update repo_name</code>一下</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-28T09:16:00.000Z" title="2018/8/28 下午5:16:00">2018-08-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.919Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a few seconds read (About 101 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/28/2018-09-12-git-tag/">Git Tag</a></h1><div class="content"><h1 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h1><ul>
-<li>git tag 列出所有标签 </li>
-<li>git show tag_name 列出该标签的版本信息</li>
-<li>git tag tag_name 创建名字为tag_name的标签</li>
-<li>git push origin tag_name推送制定的标签</li>
-<li>git push origin - -tags 推送本地所有新增的标签</li>
-<li>git tag -d tag_name 删除本地名字为tag_name的标签</li>
-<li>git push origin :refs/tags/tag_name 删除云端名字为tag_name的标签</li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-28T09:16:00.000Z" title="2018/8/28 下午5:16:00">2018-08-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.923Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 184 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/28/2018-09-30-finder-extension/">macOS Finder Extension</a></h1><div class="content"><h1 id="Finder-Sync"><a href="#Finder-Sync" class="headerlink" title="Finder Sync"></a>Finder Sync</h1><p>macOS 上的Finder App 的应用拓展 可以控制显示文件/文件夹的的图标，控制选中文件/文件夹的的右键菜单操作。<br>在工程中新建target的 选 Finder Sync 就行了，默认会创建一些示例代码。<br>Finder Sync 和 主app 通信可以使用 URL Scheme 规则进行数据传递，共享数据的话设置一下 App Groups 。也可以主app启动个本地 <a target="_blank" rel="noopener" href="https://github.com/robbiehanson/CocoaHTTPServer">http server</a> 进行通信也可以。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/BokkkRottt/FinderSyncDemo">https://github.com/BokkkRottt/FinderSyncDemo</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9124340f0f71">https://www.jianshu.com/p/9124340f0f71</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1">https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Finder.html#//apple_ref/doc/uid/TP40014214-CH15-SW1</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.cocoachina.com/ios/20141004/9824.html">http://www.cocoachina.com/ios/20141004/9824.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/">https://developer.apple.com/design/human-interface-guidelines/macos/extensions/finder-sync-extensions/</a></li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-15T03:52:02.000Z" title="2018/8/15 上午11:52:02">2018-08-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.907Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 178 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/15/2018-08-15-block-memory-management/">block memory management</a></h1><div class="content"><p>block内存管理，先看几个例子</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/main.css">
 
 
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.msmk.live","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JUST4FUN">
+<meta property="og:url" content="http://blog.msmk.live/categories/technology/page/5/index.html">
+<meta property="og:site_name" content="JUST4FUN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Gnet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://blog.msmk.live/categories/technology/page/5/">
 
 
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span></span><br><span class="line">    __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^ &#123;</span><br><span class="line">        printf(<span class="string">"in block a = %d,%p\n"</span>,a,&amp;a);</span><br><span class="line">        a = <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    block();</span><br><span class="line">    printf(<span class="string">"after block a = %d,%p\n"</span>,a,&amp;a);</span><br></pre></td></tr></table></figure>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<p>输出分别是</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">0</span>,<span class="number">0x600000252ec0</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x7ffee71c8104</span></span><br><span class="line"><span class="number">2.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line">after block a = <span class="number">1</span>,<span class="number">0x600000429ef8</span></span><br><span class="line"><span class="number">3.</span></span><br><span class="line"><span class="keyword">in</span> block a = <span class="number">1</span>,<span class="number">0x60000042b118</span></span><br><span class="line">after block a = <span class="number">2</span>,<span class="number">0x60000042b118</span></span><br></pre></td></tr></table></figure>
+  <title>分类: technology | JUST4FUN</title>
+  
 
-<p>输出中不难看出在1中变量 a 在 block 中被 copy 了生成了新的地址。经过 __block修饰符声明的变量在 block 中就是同一个地址。</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-08-13T02:56:02.000Z" title="2018/8/13 上午10:56:02">2018-08-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-05-17T07:02:48.907Z" title="2020/5/17 下午3:02:48">2020-05-17</time></span><span class="level-item"><a class="link-muted" href="/categories/technology/">technology</a></span><span class="level-item">a minute read (About 167 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/">iOS&amp;macOS 异常捕获</a></h1><div class="content"><p>最近在弄 crash 日志的处理，找到了几篇文章，也还在研究，记录一下。<br>目前已经能正常记录程序 crash 时的调用栈。<br>代码在<a target="_blank" rel="noopener" href="https://gist.github.com/wuchuwuyou/fdd20f64510e7652c7d95f5a22b7d988">https://gist.github.com/wuchuwuyou/fdd20f64510e7652c7d95f5a22b7d988</a>.<br>目前还不完善，后续继续更新。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/plausiblelabs/plcrashreporter">https://github.com/plausiblelabs/plcrashreporter</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/29051908c74b">https://www.jianshu.com/p/29051908c74b</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.iosxxx.com/blog/2015-08-29-iosyi-chang-bu-huo.html">http://www.iosxxx.com/blog/2015-08-29-iosyi-chang-bu-huo.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/kaler/CrashKit">https://github.com/kaler/CrashKit</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/948dd7a0f62d">https://www.jianshu.com/p/948dd7a0f62d</a></li>
-</ul>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/categories/technology/page/4/">Previous</a></div><div class="pagination-next"><a href="/categories/technology/page/6/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/categories/technology/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/categories/technology/page/4/">4</a></li><li><a class="pagination-link is-current" href="/categories/technology/page/5/">5</a></li><li><a class="pagination-link" href="/categories/technology/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/method-draw-image.svg" alt="Murphy"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Murphy</p><p class="is-size-6 is-block">SDE</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">61</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">15</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/wuchuwuyou" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/wuchuwuyou"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/life/"><span class="level-start"><span class="level-item">life</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/technology/"><span class="level-start"><span class="level-item">technology</span></span><span class="level-end"><span class="level-item tag">56</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-07-26T14:15:19.000Z">2021-07-26</time></p><p class="title"><a href="/2021/07/26/vcpkg-%E6%94%AF%E6%8C%81-macOS10-10-%E8%AE%BE%E7%BD%AE/">vcpkg 支持 macOS10.10 设置</a></p><p class="categories"><a href="/categories/technology/">technology</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-07-26T14:12:25.000Z">2021-07-26</time></p><p class="title"><a href="/2021/07/26/Ubuntu-%E5%88%B6%E4%BD%9Cdeb%E6%A0%BC%E5%BC%8F%E5%AE%89%E8%A3%85%E5%8C%85/">Ubuntu 制作deb格式安装包</a></p><p class="categories"><a href="/categories/technology/">technology</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-07-26T14:09:27.000Z">2021-07-26</time></p><p class="title"><a href="/2021/07/26/iOS-macOS%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">iOS/macOS设置代理</a></p><p class="categories"><a href="/categories/technology/">technology</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-08T10:13:07.000Z">2021-06-08</time></p><p class="title"><a href="/2021/06/08/macOS%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/">macOS获取系统代理</a></p><p class="categories"><a href="/categories/technology/">technology</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-08T01:37:22.000Z">2021-06-08</time></p><p class="title"><a href="/2021/06/08/macOS-%E5%9C%A8Main-Menu%E6%98%BE%E7%A4%BA%E5%B7%B2%E7%BB%8F%E6%89%93%E5%BC%80%E7%9A%84Window/">macOS 在Main Menu显示已经打开的Window</a></p><p class="categories"><a href="/categories/technology/">technology</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/07/"><span class="level-start"><span class="level-item">July 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">January 2021</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">June 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">April 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/01/"><span class="level-start"><span class="level-item">January 2019</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/11/"><span class="level-start"><span class="level-item">November 2018</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/07/"><span class="level-start"><span class="level-item">July 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/02/"><span class="level-start"><span class="level-item">February 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/08/"><span class="level-start"><span class="level-item">August 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/05/"><span class="level-start"><span class="level-item">May 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/03/"><span class="level-start"><span class="level-item">March 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/09/"><span class="level-start"><span class="level-item">September 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/1970/01/"><span class="level-start"><span class="level-item">January 1970</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ATS/"><span class="tag">ATS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Go/"><span class="tag">Go</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NSOutlineView/"><span class="tag">NSOutlineView</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Qt/"><span class="tag">Qt</span><span class="tag">18</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Safari/"><span class="tag">Safari</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WebView/"><span class="tag">WebView</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cocoa/"><span class="tag">cocoa</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/iOS/"><span class="tag">iOS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/macOS/"><span class="tag">macOS</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/tags/performSelector/"><span class="tag">performSelector</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ubuntu-deb-qt/"><span class="tag">ubuntu,deb,qt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vcpkg/"><span class="tag">vcpkg</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vs/"><span class="tag">vs</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/windows/"><span class="tag">windows</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/method-draw-image.svg" alt="JUST4FUN" height="28"></a><p class="is-size-7"><span>&copy; 2021 Murphy</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JUST4FUN</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content category">
+            
+
+  
+  
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">technology
+          <small>分类</small>
+        </h2>
+      </div>
+
+      
+    <div class="collection-year">
+      <span class="collection-header">2018</span>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-11-22T18:30:45+08:00"
+              content="2018-11-22">
+          11-22
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/11/22/2018-11-22-Listening-keyboard-and-mouse-events-for-macos/" itemprop="url">
+            <span itemprop="name">监听键盘鼠标事件</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-11-02T11:30:44+08:00"
+              content="2018-11-02">
+          11-02
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/11/02/2018-11-02-cocoa-webview-upload-file/" itemprop="url">
+            <span itemprop="name">Cocoa中WebView允许选择本地上传文件</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-11-01T17:19:44+08:00"
+              content="2018-11-01">
+          11-01
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/11/01/2018-11-01-github-permission-denied/" itemprop="url">
+            <span itemprop="name">github Permission denied (publickey)</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-10-31T17:19:44+08:00"
+              content="2018-10-31">
+          10-31
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/10/31/2018-10-31-create-file/" itemprop="url">
+            <span itemprop="name">macOS创建随机文件</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-28T17:16:00+08:00"
+              content="2018-08-28">
+          08-28
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/28/2018-08-28-lately-record/" itemprop="url">
+            <span itemprop="name">记录一下</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-28T17:16:00+08:00"
+              content="2018-08-28">
+          08-28
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/28/2018-09-12-cocoapods-private-repo/" itemprop="url">
+            <span itemprop="name">CocoaPods私有库</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-28T17:16:00+08:00"
+              content="2018-08-28">
+          08-28
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/28/2018-09-12-git-tag/" itemprop="url">
+            <span itemprop="name">Git Tag</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-28T17:16:00+08:00"
+              content="2018-08-28">
+          08-28
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/28/2018-09-30-finder-extension/" itemprop="url">
+            <span itemprop="name">macOS Finder Extension</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-15T11:52:02+08:00"
+              content="2018-08-15">
+          08-15
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/15/2018-08-15-block-memory-management/" itemprop="url">
+            <span itemprop="name">block memory management</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-08-13T10:56:02+08:00"
+              content="2018-08-13">
+          08-13
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/08/13/2018-08-13-ios-and-macos-yi-chang-bu-huo/" itemprop="url">
+            <span itemprop="name">iOS&macOS 异常捕获</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+    </div>
+  </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/categories/technology/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/categories/technology/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/technology/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/categories/technology/page/6/">6</a><a class="extend next" rel="next" href="/categories/technology/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gnet</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gnet</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
