@@ -9,6 +9,7 @@ keywords:
 ---
 
 ## Value Types
+
 Before discussing ownership, let’s first talk about value types.
 
 Let’s look at this code first. Here we declare a structure named User.
@@ -62,7 +63,7 @@ func create() {
 We explicitly declared that the structure is a non-copyable type. When we assign `user` to `copy`, the original `user` value will be consumed and the ownership will be transferred (also called "move only" type).
 This means that `user` can no longer be used, as ownership now belongs to `copy`. Unlike normal Swift types which can be freely copied, similar to the concept of ownership in Rust.
 
-# Rust ownership
+## Rust ownership
 
 Before we move on to Swift ownership, let’s take a brief look at the concept of ownership in Rust so that we can understand it more easily. Rust manages memory through ownership, which the compiler checks against a series of rules at compile time.
 
@@ -100,7 +101,7 @@ When s1 is assigned to s2, Rust considers that s1 is no longer valid, so there i
 
 We briefly looked at the concept of ownership in Rust, now let’s get back to Swift.
 
-# Why
+## Why
 
 There is already a `class` type, why do we need a `NonCopyable` type structure?
 
