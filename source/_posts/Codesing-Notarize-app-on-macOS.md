@@ -12,7 +12,7 @@ keywords:  macOS,codesign, notarization,公证,签名
 可用签名证书查询
 
 	security find-identity -v -p codesigning
-
+<!--More-->
 签名
 
 	codesign -s 'Name of the certificate’ /path/Example.app
